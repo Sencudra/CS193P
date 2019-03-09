@@ -20,6 +20,10 @@ class ViewController: UIViewController {
     }
     
     enum Colors {
+        static var grey: UIColor {
+            return #colorLiteral(red: 0.9450716972, green: 0.9450716972, blue: 0.9450716972, alpha: 1)
+        }
+        
         static var white: UIColor {
             return #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         }
@@ -33,12 +37,20 @@ class ViewController: UIViewController {
         }
     }
     
+    let emojiChoices = ["🏀","🏈","⚾️","🎾","🏐","🏉","🎱","⚽️","🏓","🏸"]
+    lazy var emojiChoicesList = emojiChoices
+    var emoji = [Int:String]()
+    
     @IBOutlet var cardButtons: [UIButton]!
     @IBOutlet weak var flipCountLabel: UILabel!
     
     lazy var game = Concentration(numberOfPairsOfCards: cardButtons.count / 2 )
     
     var flipCount = 0 { didSet {flipCountLabel.text = StaticTexts.flipsLabelText + "\(flipCount)"} }
+    
+    override func viewDidLoad() {
+       
+    }
     
     @IBAction func touch(_ sender: UIButton) {
         flipCount += 1
@@ -52,6 +64,14 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func startNewGame() {
+        flipCount = 0
+        game = Concentration(numberOfPairsOfCards: cardButtons.count / 2 )
+        emojiChoicesList = emojiChoices
+        emoji = [Int:String]()
+        updateViewFromModel()
+    }
+    
     func updateViewFromModel() {
         for index in cardButtons.indices {
             let button = cardButtons[index]
@@ -62,23 +82,16 @@ class ViewController: UIViewController {
                 button.backgroundColor = Colors.white
             } else {
                 button.setTitle(StaticTexts.blankLabelText, for: UIControl.State.normal)
-                button.backgroundColor = card.isMatched ? Colors.black : Colors.orange
+                button.backgroundColor = card.isMatched ? Colors.grey : Colors.orange
             }
         }
     }
     
-    var emojiChoices = ["🏀","🏈","⚾️","🎾","🏐","🏉","🎱","⚽️","🏓","🏸"]
-    var emoji = [Int:String]()
-    
     func emoji(for card: Card) -> String {
         if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoices.count - 1)))
-            emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+            let randomIndex = Int(arc4random_uniform(UInt32(emojiChoicesList.count - 1)))
+            emoji[card.identifier] = emojiChoicesList.remove(at: randomIndex)
         }
         return emoji[card.identifier] ?? "?"
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
     }
 }
