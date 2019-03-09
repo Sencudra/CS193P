@@ -48,10 +48,6 @@ class ViewController: UIViewController {
     
     var flipCount = 0 { didSet {flipCountLabel.text = StaticTexts.flipsLabelText + "\(flipCount)"} }
     
-    override func viewDidLoad() {
-       
-    }
-    
     @IBAction func touch(_ sender: UIButton) {
         flipCount += 1
         
