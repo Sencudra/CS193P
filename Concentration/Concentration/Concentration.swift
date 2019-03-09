@@ -16,7 +16,6 @@ class Concentration {
     var indexOfOnlyOneSelectedCard : Int?
     
     init(numberOfPairsOfCards: Int) {
-        print(numberOfPairsOfCards)
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
