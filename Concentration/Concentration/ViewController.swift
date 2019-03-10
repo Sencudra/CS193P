@@ -17,6 +17,9 @@ class ViewController: UIViewController {
         static var blankLabelText: String {
             return ""
         }
+        static var scoreLabelText: String {
+            return "Score: "
+        }
     }
     
     enum Colors {
@@ -43,10 +46,13 @@ class ViewController: UIViewController {
     
     @IBOutlet var cardButtons: [UIButton]!
     @IBOutlet weak var flipCountLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     lazy var game = Concentration(numberOfPairsOfCards: cardButtons.count / 2 )
     
     var flipCount = 0 { didSet {flipCountLabel.text = StaticTexts.flipsLabelText + "\(flipCount)"} }
+    
+    var gameScore = 0 { didSet {scoreLabel.text = StaticTexts.scoreLabelText + "\(gameScore)"}}
     
     @IBAction func touch(_ sender: UIButton) {
         flipCount += 1
@@ -81,6 +87,7 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? Colors.grey : Colors.orange
             }
         }
+        gameScore = game.score
     }
     
     func emoji(for card: Card) -> String {

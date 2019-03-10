@@ -12,7 +12,7 @@ import Foundation
 class Concentration {
     
     var cards = [Card]()
-    
+    var score = 0
     var indexOfOnlyOneSelectedCard : Int?
     
     init(numberOfPairsOfCards: Int) {
@@ -31,8 +31,9 @@ class Concentration {
                 if cards[selectedCardIndex].identifier == cards[index].identifier {
                     cards[selectedCardIndex].isMatched = true
                     cards[index].isMatched = true
+                    score += 2
                 } else {
-                    // penalty
+                    score -= 1
                 }
                 cards[index].isFaceUp = true
                 indexOfOnlyOneSelectedCard = nil
