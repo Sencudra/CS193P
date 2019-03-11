@@ -13,7 +13,12 @@ class Concentration {
     
     var cards = [Card]()
     var score = 0
-    var indexOfOnlyOneSelectedCard : Int?
+    var flips = 0
+    
+    private var penalty = 1
+    private var reward = 2
+    
+    private var indexOfOnlyOneSelectedCard : Int?
     
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
@@ -26,26 +31,29 @@ class Concentration {
     func chooseCard(at index: Int) {
         if !cards[index].isMatched, !cards[index].isFaceUp {
             
+            // One card selected
             if let selectedCardIndex = indexOfOnlyOneSelectedCard {
                 
+                // Matching cards found
                 if cards[selectedCardIndex].identifier == cards[index].identifier {
                     cards[selectedCardIndex].isMatched = true
                     cards[index].isMatched = true
-                    score += 2
+                    score += penalty
                 } else {
-                    score -= 1
+                    score -= penalty
                 }
                 cards[index].isFaceUp = true
                 indexOfOnlyOneSelectedCard = nil
-            }
-            else {
                 
+            // Two or none cards selected
+            } else {
                 for index in cards.indices {
                     cards[index].isFaceUp = false
                 }
                 cards[index].isFaceUp = true
                 indexOfOnlyOneSelectedCard = index
             }
+            flips += 1
         }
     }
 }

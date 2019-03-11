@@ -55,8 +55,6 @@ class ViewController: UIViewController {
     var gameScore = 0 { didSet {scoreLabel.text = StaticTexts.scoreLabelText + "\(gameScore)"}}
     
     @IBAction func touch(_ sender: UIButton) {
-        flipCount += 1
-        
         if let cardNumber = cardButtons.index(of: sender) {
             game.chooseCard(at: cardNumber)
             updateViewFromModel()
@@ -67,7 +65,6 @@ class ViewController: UIViewController {
     }
     
     @IBAction func startNewGame() {
-        flipCount = 0
         game = Concentration(numberOfPairsOfCards: cardButtons.count / 2 )
         emojiChoicesList = emojiChoices
         emoji = [Int:String]()
@@ -87,6 +84,7 @@ class ViewController: UIViewController {
                 button.backgroundColor = card.isMatched ? Colors.grey : Colors.orange
             }
         }
+        flipCount = game.flips
         gameScore = game.score
     }
     
