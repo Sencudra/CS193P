@@ -10,7 +10,7 @@ This is my path through the [iOS development course](https://www.youtube.com/pla
 | 1. | [Overview of iOS](slides/Lecture-1-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=z9IXfYHhKYI&index=1&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 4, 2019 | :heavy_check_mark:
 | 2. | [Model View Controller (MVC)](slides/Lecture-2-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=4iGdu4IWMFc&index=2&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 6, 2019 | :heavy_check_mark:
 | FL1 | Debugging: Xcode Tips & Tricks | [![](media/play.png)](https://www.youtube.com/watch?v=7CeXdDGjsVU&index=19&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 8, 2019 | :heavy_check_mark: |
-| 3. | [Swift](slides/Lecture-3-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=88husjydCWY&index=3&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 11, 2019 | :x: |
+| 3. | [Swift](slides/Lecture-3-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=88husjydCWY&index=3&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 11, 2019 | :heavy_check_mark: |
 | 4. | [Protocols & Closures](slides/Lecture-4-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=RGMKmhy-eWE&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=4) | March 13, 2019 | :x: |
 | 5. | [Drawing in iOS](slides/Lecture-5-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=pOO0pz0gPLk&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=5) | March 15, 2019 | :x: |
 | 6. | [Multitouch & Multiple MVCs](slides/Lecture-6-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=N_PyNplrhys&index=6&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 18, 2019 | :x: |
@@ -32,8 +32,8 @@ This is my path through the [iOS development course](https://www.youtube.com/pla
 
 | Reading  | Name | Deadline | Progress
 | ------------- | ------------- | ------------- | ------------- |
-| 1. | [Reading 1: Intro to Swift](reading/Reading_1_Intro_to_Swift.pdf) | March 11, 2019 | :clock2: |
-| 2. | [Reading 2: More Swift](reading/Reading_2_More_Swift.pdf)  | March 15, 2019 | :x: |
+| 1. | [Reading 1: Intro to Swift](reading/Reading_1_Intro_to_Swift.pdf) | March 11, 2019 | :heavy_check_mark: |
+| 2. | [Reading 2: More Swift](reading/Reading_2_More_Swift.pdf)  | March 15, 2019 | :clock2: |
 | 3. | [Reading 3: Finishing off Swift](reading/Reading_3_Finishing_Off_Swift.pdf)  | March 20, 2019 | :x: |	
 
 ## Problem Sets
