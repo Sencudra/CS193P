@@ -40,7 +40,7 @@ This is my path through the [iOS development course](https://www.youtube.com/pla
 
 | PS  | Name | Deadline | Progress
 | ------------- | ------------- | ------------- | ------------- |
-| 1. | [Assignment 1: Concentration](problemsets/Programming_Project_1_Concentration.pdf) | March 13, 2019 | :clock2: |
+| 1. | [Assignment 1: Concentration](problemsets/Programming_Project_1_Concentration.pdf) | March 13, 2019 | :heavy_check_mark: |
 | 2. | [Assignment 2: Set](problemsets/Programming_Project_2_Set.pdf) | March 18, 2019 | :x: |
 | 3. | [Assignment 3: Graphical Set](problemsets/Programming_Project_3_Graphical_Set.pdf) | March 22, 2019 | :x: |
 | 4. | [Assignment 4: Animated Set](problemsets/Programming_Project_4_Animated_Set.pdf) | April 3, 2019 | :x: |
