@@ -11,14 +11,30 @@ import Foundation
 
 class Concentration {
     
-    var cards = [Card]()
+    private(set) var cards = [Card]()
     var score = 0
     var flips = 0
     
     private var penalty = 1
     private var reward = 2
     
-    private var indexOfOnlyOneSelectedCard : Int?
+    private var indexOfOnlyOneSelectedCard : Int? {
+        get {
+            var foundIndex: Int?
+            for index in cards.indices {
+                if cards[index].isFaceUp  {
+                    guard foundIndex == nil else { return nil }
+                    foundIndex = index
+                }
+            }
+            return foundIndex
+        }
+        set {
+            for index in cards.indices {
+                cards[index].isFaceUp = (index == newValue)
+            }
+        }
+    }
     
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
@@ -29,6 +45,7 @@ class Concentration {
     }
     
     func chooseCard(at index: Int) {
+        assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index out of range")
         if !cards[index].isMatched, !cards[index].isFaceUp {
             
             // One card selected
@@ -43,14 +60,9 @@ class Concentration {
                     score -= penalty
                 }
                 cards[index].isFaceUp = true
-                indexOfOnlyOneSelectedCard = nil
                 
             // Two or none cards selected
             } else {
-                for index in cards.indices {
-                    cards[index].isFaceUp = false
-                }
-                cards[index].isFaceUp = true
                 indexOfOnlyOneSelectedCard = index
             }
             flips += 1
