@@ -11,9 +11,15 @@ import UIKit
 
 struct Theme {
     
+    // MARK: - Public types
+    
     var emojiSet: [String]
+    
     var backgroundColor: UIColor
+    
     var cardColor: UIColor
+    
+    // MARK: - Private types
     
     private static var themes: [Theme] {
         return [
@@ -27,9 +33,11 @@ struct Theme {
         ]
     }
     
+    // MARK: - Public methods
+    
     static func randomTheme() -> Theme {
         let count = themes.count
         return themes[Int.random(in: 0..<count)]
     }
+    
 }
-
