@@ -33,15 +33,15 @@ This is my path through the [iOS development course](https://www.youtube.com/pla
 | Reading  | Name | Deadline | Progress
 | ------------- | ------------- | ------------- | ------------- |
 | 1. | [Reading 1: Intro to Swift](reading/Reading_1_Intro_to_Swift.pdf) | March 11, 2019 | :heavy_check_mark: |
-| 2. | [Reading 2: More Swift](reading/Reading_2_More_Swift.pdf)  | March 15, 2019 | :clock2: |
-| 3. | [Reading 3: Finishing off Swift](reading/Reading_3_Finishing_Off_Swift.pdf)  | March 20, 2019 | :x: |	
+| 2. | [Reading 2: More Swift](reading/Reading_2_More_Swift.pdf)  | March 15, 2019 | :heavy_check_mark: |
+| 3. | [Reading 3: Finishing off Swift](reading/Reading_3_Finishing_Off_Swift.pdf)  | March 20, 2019 | :clock2: |	
 
 ## Problem Sets
 
 | PS  | Name | Deadline | Progress
 | ------------- | ------------- | ------------- | ------------- |
 | 1. | [Assignment 1: Concentration](problemsets/Programming_Project_1_Concentration.pdf) | March 13, 2019 | :heavy_check_mark: |
-| 2. | [Assignment 2: Set](problemsets/Programming_Project_2_Set.pdf) | March 18, 2019 | :x: |
+| 2. | [Assignment 2: Set](problemsets/Programming_Project_2_Set.pdf) | March 18, 2019 | :clock2: |
 | 3. | [Assignment 3: Graphical Set](problemsets/Programming_Project_3_Graphical_Set.pdf) | March 22, 2019 | :x: |
 | 4. | [Assignment 4: Animated Set](problemsets/Programming_Project_4_Animated_Set.pdf) | April 3, 2019 | :x: |
 | 5. | [Assignment 5: Image Gallery](problemsets/Programming_Project_5_Image_Gallery.pdf) | April 10, 2019 | :x: |
