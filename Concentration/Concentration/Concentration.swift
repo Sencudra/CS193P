@@ -8,17 +8,39 @@
 
 import Foundation
 
+enum GameRules {
+    
+    static var penalty: Int {
+        return 1
+    }
+    
+    static var reward: Int {
+        return -5
+    }
+    
+}
 
 class Concentration {
+
+    // MARK: - Public types
+    
+    var score = Int.zero
+    
+    var flips = Int.zero
+    
+    // MARK: - Semipublic types
     
     private(set) var cards = [Card]()
-    var score = 0
-    var flips = 0
     
-    private var penalty = 1
-    private var reward = 2
+    // MARK: - Private types
     
-    private var indexOfOnlyOneSelectedCard : Int? {
+    private var penalty = GameRules.penalty
+    
+    private var reward = GameRules.reward
+    
+    private var timerToMeasureTimeElapsed: Date = Date()
+    
+    private var indexOfOnlyOneSelectedCard: Int? {
         get {
             var foundIndex: Int?
             for index in cards.indices {
@@ -36,6 +58,8 @@ class Concentration {
         }
     }
     
+    // MARK: - Init
+    
     init(numberOfPairsOfCards: Int) {
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
@@ -44,8 +68,11 @@ class Concentration {
         cards.shuffle()
     }
     
+    // MARK: - Public methods
+    
     func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index out of range")
+        
         if !cards[index].isMatched, !cards[index].isFaceUp {
             
             // One card selected
@@ -55,9 +82,12 @@ class Concentration {
                 if cards[selectedCardIndex].identifier == cards[index].identifier {
                     cards[selectedCardIndex].isMatched = true
                     cards[index].isMatched = true
-                    score += penalty
+                
+                    score = score + reward - Int(timerToMeasureTimeElapsed.timeIntervalSinceNow)
+
+                    timerToMeasureTimeElapsed = Date()
                 } else {
-                    score -= penalty
+                    score += penalty
                 }
                 cards[index].isFaceUp = true
                 
@@ -67,5 +97,7 @@ class Concentration {
             }
             flips += 1
         }
+        
     }
+    
 }
