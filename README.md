@@ -12,8 +12,8 @@ This is my path through the [iOS development course](https://www.youtube.com/pla
 | FL1 | Debugging: Xcode Tips & Tricks | [![](media/play.png)](https://www.youtube.com/watch?v=7CeXdDGjsVU&index=19&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 8, 2019 | :heavy_check_mark: |
 | 3. | [Swift](slides/Lecture-3-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=88husjydCWY&index=3&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 11, 2019 | :heavy_check_mark: |
 | 4. | [Protocols & Closures](slides/Lecture-4-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=RGMKmhy-eWE&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=4) | March 13, 2019 | :heavy_check_mark: |
-| 5. | [Drawing in iOS](slides/Lecture-5-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=pOO0pz0gPLk&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=5) | March 15, 2019 | :x: |
-| 6. | [Multitouch & Multiple MVCs](slides/Lecture-6-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=N_PyNplrhys&index=6&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 18, 2019 | :x: |
+| 5. | [Drawing in iOS](slides/Lecture-5-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=pOO0pz0gPLk&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=5) | March 15, 2019 | :clock2: |
+| 6. | [Multitouch & Multiple MVCs](slides/Lecture-6-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=N_PyNplrhys&index=6&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 18, 2019 | :clock2: |
 | 7. | [Multiple MVCs, Timer, Animation](slides/Lecture-7-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=diihWsxOsDk&index=7&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 20, 2019 | :x: |
 | 8. | [Animation](slides/Lecture-8-Slides.pdf) | [![](media/play.png)](https://www.youtube.com/watch?v=5w9lu9ABJzE&index=8&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | March 22, 2019 | :x: |
 | FL2 | Github, Source Code Workflow | [![](media/play.png)](https://www.youtube.com/watch?v=P8gyK-_auNk&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=18) | March 25, 2019 | :x: |
