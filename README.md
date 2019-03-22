@@ -47,3 +47,9 @@ This is my path through the [iOS development course](https://www.youtube.com/pla
 | 5. | [Assignment 5: Image Gallery](problemsets/Programming_Project_5_Image_Gallery.pdf) | April 10, 2019 | :x: |
 | 6. | [Assignment 6: Persistent Image Gallary](problemsets/Programming_Project_6_Persistent_Image_Gallery.pdf) | April 15, 2019 | :x: |
 | 7. | *TBA* | *TBA* | :x:
+
+## Deadlines debt
+
+L 5,6,7,8
+All reading 
+PA2,3
