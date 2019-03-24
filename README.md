@@ -1,4 +1,4 @@
-# Stanford Engineering CS193p: Developing iOS Apps
+# [DELAYED] Stanford Engineering CS193p: Developing iOS Apps
 
 ![](media/CS193P.png)
 
