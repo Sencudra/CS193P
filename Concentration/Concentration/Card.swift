@@ -2,7 +2,7 @@
 //  Card.swift
 //  Concentration
 //
-//  Created by profile on 09/03/2019.
+//  Created by Vlad Tarasevich on 09/03/2019.
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
