@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak private var setsFoundLabel: UILabel!
     @IBOutlet private var cardButtons: [UIButton]!
+    @IBOutlet private var dealButton: 		UIButton!
     
     // MARK: - Private properties
     
@@ -110,6 +111,7 @@ class ViewController: UIViewController {
     private func updateView() {
         
         updateSetsFoundLabel()
+        updateDealButton()
         
         for button in cardButtons {
             
@@ -149,6 +151,20 @@ class ViewController: UIViewController {
     private func updateSetsFoundLabel() {
         let count = game.setsFound
         setsFoundLabel.text = "\(staticTexts.scoreLabel)\(count)"
+    }
+    
+    private func updateDealButton() {
+        dealButton.isEnabled = game.dealingAvailable
+        dealButton.setTitleColor(getDisabledColor(if: dealButton.isEnabled), for: .normal)
+    }
+    
+    private func getDisabledColor(if enabled: Bool) -> UIColor {
+        switch enabled {
+        case true:
+            return UIColor.white
+        case false:
+            return UIColor.lightText
+        }
     }
     
     private func getSelectionColor(if match: Bool?) -> CGColor {

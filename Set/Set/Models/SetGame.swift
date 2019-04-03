@@ -18,6 +18,7 @@ class SetGame {
     private(set) var setsFound: Int = 0
     private(set) var table = [Card]()
     private(set) var selected = [Card]()
+    private(set) var dealingAvailable = true
     
     // MARK: - Private properties
     private var deck = [Card]()
@@ -84,21 +85,25 @@ class SetGame {
     
     private func select(card: Card) {
         
-        // Unselect card
-        for index in 0..<selected.count {
-            
-            if selected[index] == card {
-                print("remove")
-                selected.remove(at: index)
-                return
-            }
-        }
+        if table.contains(card) {
         
-        // Select card
-        if (0..<gameRules.cardsToSelect).contains(selected.count) {
-            selected += [card]
-        } else {
-            assertionFailure("SetGame.selectCard(at \(index)) : Number of selected cards exceeded possible value")
+            // Unselect card
+            for index in 0..<selected.count {
+                
+                if selected[index] == card {
+                    selected.remove(at: index)
+                    return
+                }
+            }
+            
+            // Select card
+            if (0..<gameRules.cardsToSelect).contains(selected.count) {
+                print("added")
+                selected += [card]
+            } else {
+                assertionFailure("SetGame.selectCard(at \(index)) : Number of selected cards exceeded possible value")
+            }
+            
         }
         
     }
@@ -129,12 +134,18 @@ class SetGame {
     
     private func deal(numberOf: Int) {
         
-        if deck.count >= numberOf  {
+        if deck.count >= numberOf {
             for _ in 0..<numberOf {
                 let card = deck.removeFirst()
                 table += [card]
             }
             
+            if table.count == gameRules.tableMaxSize {
+                dealingAvailable = false
+            }
+            
+        } else {
+            dealingAvailable = false
         }
         
     }
