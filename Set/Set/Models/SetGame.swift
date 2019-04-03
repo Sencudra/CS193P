@@ -15,6 +15,7 @@ class SetGame {
     
     // MARK: - Semiprivate properties
     
+    private(set) var score: Int = 0
     private(set) var setsFound: Int = 0
     private(set) var table = [Card]()
     private(set) var selected = [Card]()
@@ -69,12 +70,16 @@ class SetGame {
         
         // Check three selected cards
         if selected.count == gameRules.cardsToSelect {
-            if checkSet(selected[0], selected[1], selected[2]) {
-                setsFound += 1
-                return true
-            } else {
-                return false
-            }
+            
+            let matched = checkSet(selected[0], selected[1], selected[2])
+                        setScore(if: matched, evalFunc: { _ -> Int in
+                if matched {
+                    return 3
+                } else {
+                    return -5
+                }
+            })
+            return matched
         } else {
             return nil
         }
@@ -98,8 +103,8 @@ class SetGame {
             
             // Select card
             if (0..<gameRules.cardsToSelect).contains(selected.count) {
-                print("added")
                 selected += [card]
+                score -= 1
             } else {
                 assertionFailure("SetGame.selectCard(at \(index)) : Number of selected cards exceeded possible value")
             }
@@ -160,6 +165,10 @@ class SetGame {
         let checkRule = { $0 == 1 || $0 == gameRules.cardsToSelect }
         
         return checkRule(ruleNumber) && checkRule(ruleSymbol) && checkRule(ruleColor) && checkRule(ruleFilling)
+    }
+    
+    private func setScore(if matched: Bool, evalFunc: (_:Bool) -> Int) {
+        score += evalFunc(matched)
     }
    
 }

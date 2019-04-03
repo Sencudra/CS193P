@@ -300,7 +300,7 @@
                     </view>
                     <connections>
                         <outlet property="dealButton" destination="NQA-zS-LLg" id="fIh-KW-b5J"/>
-                        <outlet property="setsFoundLabel" destination="VQ2-G4-pbz" id="CMd-St-Nrs"/>
+                        <outlet property="scoreLabel" destination="VQ2-G4-pbz" id="CMd-St-Nrs"/>
                         <outletCollection property="cardButtons" destination="KYl-qa-dkc" collectionClass="NSMutableArray" id="Azv-UO-0Tb"/>
                         <outletCollection property="cardButtons" destination="rQj-hk-TBu" collectionClass="NSMutableArray" id="mSf-ZH-TnE"/>
                         <outletCollection property="cardButtons" destination="SaY-Fp-jj1" collectionClass="NSMutableArray" id="9e0-1l-Ssu"/>

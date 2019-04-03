@@ -15,16 +15,16 @@ class ViewController: UIViewController {
     private enum staticTexts {
         
         static var scoreLabel: String {
-            return "Sets found: "
+            return "Score: "
         }
         
     }
     
     // MARK: - Outlets
     
-    @IBOutlet weak private var setsFoundLabel: UILabel!
+    @IBOutlet weak private var scoreLabel: UILabel!
     @IBOutlet private var cardButtons: [UIButton]!
-    @IBOutlet private var dealButton: 		UIButton!
+    @IBOutlet private var dealButton: UIButton!
     
     // MARK: - Private properties
     
@@ -149,8 +149,8 @@ class ViewController: UIViewController {
     }
     
     private func updateSetsFoundLabel() {
-        let count = game.setsFound
-        setsFoundLabel.text = "\(staticTexts.scoreLabel)\(count)"
+        let count = game.score
+        scoreLabel.text = "\(staticTexts.scoreLabel)\(count)"
     }
     
     private func updateDealButton() {
