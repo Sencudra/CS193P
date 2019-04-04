@@ -27,6 +27,8 @@ class SetGame {
         return deck.count
     }
     
+    private var time = Date()
+    
     // MARK: - Public methods
     
     init() {
@@ -37,6 +39,7 @@ class SetGame {
     
     public func dealMoreCards(){
         deal(numberOf: gameRules.cardsDealingDuringGame)
+        score -= 10
     }
     
     public func touch(card: Card) -> Bool? {
@@ -58,6 +61,7 @@ class SetGame {
                 
                 // add new cards
                 dealMoreCards()
+                
                 
             }
             
@@ -120,7 +124,7 @@ class SetGame {
             for color in range {
                 for symbol in range {
                     for filling in range {
-                        
+       
                         let card = Card(numberOfSymbols: number, symbol: symbol, color: color, filling: filling)
                         deck += [card]
                         
@@ -168,7 +172,9 @@ class SetGame {
     }
     
     private func setScore(if matched: Bool, evalFunc: (_:Bool) -> Int) {
-        score += evalFunc(matched)
+        score = score + evalFunc(matched) - Int(time.timeIntervalSinceNow)
+        
+        time = Date()
     }
    
 }

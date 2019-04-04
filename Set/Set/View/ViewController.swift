@@ -18,11 +18,17 @@ class ViewController: UIViewController {
             return "Score: "
         }
         
+        static var setsFoundLabel: String {
+            return "Sets found: "
+        }
+        
     }
     
     // MARK: - Outlets
     
     @IBOutlet weak private var scoreLabel: UILabel!
+    @IBOutlet weak private var setsFoundLabel: UILabel!
+    
     @IBOutlet private var cardButtons: [UIButton]!
     @IBOutlet private var dealButton: UIButton!
     
@@ -111,6 +117,7 @@ class ViewController: UIViewController {
     private func updateView() {
         
         updateSetsFoundLabel()
+        updateScoreLabel()
         updateDealButton()
         
         for button in cardButtons {
@@ -148,7 +155,13 @@ class ViewController: UIViewController {
     
     }
     
+    // TODO move to some prepare
     private func updateSetsFoundLabel() {
+        let count = game.setsFound
+        setsFoundLabel.text = "\(staticTexts.setsFoundLabel)\(count)"
+    }
+    
+    private func updateScoreLabel() {
         let count = game.score
         scoreLabel.text = "\(staticTexts.scoreLabel)\(count)"
     }

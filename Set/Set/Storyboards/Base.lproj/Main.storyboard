@@ -271,11 +271,21 @@
                                     <action selector="touchDealMoreCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NtK-W5-HOl"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets found: ???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ2-G4-pbz">
-                                <rect key="frame" x="112.5" y="625" width="150" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: ???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQ2-G4-pbz">
+                                <rect key="frame" x="16" y="625" width="100" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="JGL-J4-hp8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="JGL-J4-hp8"/>
                                     <constraint firstAttribute="height" constant="40" id="d55-Jf-Qtr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sets found: ???" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fo6-Ap-uhm">
+                                <rect key="frame" x="217.5" y="625" width="141.5" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="4Sd-e5-jaZ"/>
+                                    <constraint firstAttribute="height" constant="40" id="SPf-qD-FM6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -288,19 +298,23 @@
                             <constraint firstItem="ev6-nP-tlz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="6Ey-Ze-BtP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VQ2-G4-pbz" secondAttribute="bottom" constant="2" id="6bh-9c-wdm"/>
                             <constraint firstItem="3QS-Xr-yTl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="CPf-t9-BNb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Fo6-Ap-uhm" secondAttribute="trailing" constant="16" id="FMw-iM-XiU"/>
+                            <constraint firstItem="Fo6-Ap-uhm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="VQ2-G4-pbz" secondAttribute="trailing" constant="8" symbolic="YES" id="V7I-7i-t1g"/>
                             <constraint firstItem="NQA-zS-LLg" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="3QS-Xr-yTl" secondAttribute="trailing" constant="8" symbolic="YES" id="W1S-NZ-I2I"/>
                             <constraint firstItem="3QS-Xr-yTl" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="m6P-CO-qU0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ev6-nP-tlz" secondAttribute="trailing" constant="10" id="ocn-J6-DIx"/>
                             <constraint firstItem="VQ2-G4-pbz" firstAttribute="top" secondItem="ev6-nP-tlz" secondAttribute="bottom" constant="2" id="qT9-MR-Weu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NQA-zS-LLg" secondAttribute="trailing" constant="16" id="qYO-fw-Wz8"/>
                             <constraint firstItem="NQA-zS-LLg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="qZO-qF-2n3"/>
-                            <constraint firstItem="VQ2-G4-pbz" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="v3d-DE-aqS"/>
+                            <constraint firstItem="Fo6-Ap-uhm" firstAttribute="top" secondItem="ev6-nP-tlz" secondAttribute="bottom" constant="2" id="sPT-fd-BB6"/>
+                            <constraint firstItem="VQ2-G4-pbz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="sfv-12-osB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="dealButton" destination="NQA-zS-LLg" id="fIh-KW-b5J"/>
                         <outlet property="scoreLabel" destination="VQ2-G4-pbz" id="CMd-St-Nrs"/>
+                        <outlet property="setsFoundLabel" destination="Fo6-Ap-uhm" id="9mL-Xf-cyf"/>
                         <outletCollection property="cardButtons" destination="KYl-qa-dkc" collectionClass="NSMutableArray" id="Azv-UO-0Tb"/>
                         <outletCollection property="cardButtons" destination="rQj-hk-TBu" collectionClass="NSMutableArray" id="mSf-ZH-TnE"/>
                         <outletCollection property="cardButtons" destination="SaY-Fp-jj1" collectionClass="NSMutableArray" id="9e0-1l-Ssu"/>
