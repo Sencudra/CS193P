@@ -15,6 +15,7 @@ class SetGame {
     
     // MARK: - Semiprivate properties
     
+    private(set) var time = Date()
     private(set) var score: Int = 0
     private(set) var setsFound: Int = 0
     private(set) var table = [Card]()
@@ -26,14 +27,14 @@ class SetGame {
     private var deckSize: Int {
         return deck.count
     }
-    
-    private var time = Date()
-    
+        
     // MARK: - Public methods
     
     init() {
-        initializeDeck()
         setsFound = 0
+        time = Date()
+        
+        initializeDeck()
         deal(numberOf: gameRules.cardsDealingOnStart)
     }
     
@@ -61,22 +62,18 @@ class SetGame {
                 
                 // add new cards
                 dealMoreCards()
-                
-                
             }
             
             // remove selection anyway
             selected.removeAll()
-            
         }
-        
         select(card: card)
         
         // Check three selected cards
         if selected.count == gameRules.cardsToSelect {
             
             let matched = checkSet(selected[0], selected[1], selected[2])
-                        setScore(if: matched, evalFunc: { _ -> Int in
+                        score(if: matched, evalFunc: { _ -> Int in
                 if matched {
                     return 3
                 } else {
@@ -86,6 +83,16 @@ class SetGame {
             return matched
         } else {
             return nil
+        }
+        
+    }
+    
+    public func getHelp() -> [Card]{
+        
+        let setOfCards = []
+        
+        for card in table {
+            
         }
         
     }
@@ -171,10 +178,8 @@ class SetGame {
         return checkRule(ruleNumber) && checkRule(ruleSymbol) && checkRule(ruleColor) && checkRule(ruleFilling)
     }
     
-    private func setScore(if matched: Bool, evalFunc: (_:Bool) -> Int) {
-        score = score + evalFunc(matched) - Int(time.timeIntervalSinceNow)
-        
-        time = Date()
+    private func score(if matched: Bool, evalFunc: (_:Bool) -> Int) {
+        score = score + evalFunc(matched)
     }
    
 }

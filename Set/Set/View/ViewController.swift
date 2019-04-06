@@ -12,46 +12,52 @@ class ViewController: UIViewController {
     
     // MARK: - Private types
     
-    private enum staticTexts {
-        
-        static var scoreLabel: String {
-            return "Score: "
-        }
-        
-        static var setsFoundLabel: String {
-            return "Sets found: "
-        }
-        
-    }
+    private typealias Text = String.StaticTexts
+    private typealias Color = UIColor.Color
     
     // MARK: - Outlets
     
-    @IBOutlet weak private var scoreLabel: UILabel!
+    @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var setsFoundLabel: UILabel!
     
     @IBOutlet private var cardButtons: [UIButton]!
     @IBOutlet private var dealButton: UIButton!
+    @IBOutlet private var helpButton: UIButton!
     
     // MARK: - Private properties
     
-    private var game = SetGame()
+    private var model: SetGame = SetGame()
+    private var timer: Timer = Timer()
+    private var uiButtonSlotsToCards: [UIButton:Card] = [UIButton:Card]()
     
-    private var buttonToCard = [UIButton:Card]()
-    private lazy var buttonsEmpty: [UIButton] = cardButtons.shuffled()
+    private lazy var uiButtonEmptySlots: [UIButton] = cardButtons.shuffled()
+    private lazy var color = Color.blue
     
-    private var color = UIColor.blue.cgColor
+    // MARK: - Overrides
     
+    override var prefersStatusBarHidden: Bool {
+        get {
+            return true
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        sheduledTimerWithTimeInterval()
+        initCards()
+    }
+    
+    private func sheduledTimerWithTimeInterval() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimeLabel), userInfo: nil, repeats: true)
+    }
+
     // MARK: - Private methods
     
     @IBAction private func touchCard(_ sender: UIButton) {
-        if let card = buttonToCard[sender] {
-            let match = game.touch(card: card)
-            color = getSelectionColor(if: match)
+        if let card = uiButtonSlotsToCards[sender] {
+            let match = model.touch(card: card)
+            color = Color.selection(if: match)
             updateMapping()
-            
-            // TODO remove this crap
-            print("Card: number - \(card.numberOfSymbols+1), color - \(card.color), symbol - \(card.symbol), filling - \(card.filling)")
-            
         } else {
             print("ViewController.touchCard() - Card not found in cardButtons!")
         }
@@ -59,74 +65,66 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func touchDealMoreCards(_ sender: Any) {
-        if buttonsEmpty.count > 0 {
-            game.dealMoreCards()
+        if uiButtonEmptySlots.count > 0 {
+            model.dealMoreCards()
             updateMapping()
         } else {
             print("ViewController.touchDealMoreCards() - No space for more cards")
         }
+        
     }
     
     @IBAction private func touchNewGameButton(_ sender: Any) {
-        game = SetGame()
+        model = SetGame()
+        sheduledTimerWithTimeInterval()
         initCards()
-        
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @IBAction private func touchHelpButton(_ sender: Any) {
         
-        initCards()
     }
     
     private func initCards() {
-        
-        buttonToCard = [UIButton:Card]()
-        buttonsEmpty = cardButtons.shuffled()
-        
-        for card in game.table {
-            buttonToCard[buttonsEmpty.removeFirst()] = card
+        uiButtonSlotsToCards = [UIButton:Card]()
+        uiButtonEmptySlots = cardButtons.shuffled()
+        for card in model.table {
+            uiButtonSlotsToCards[uiButtonEmptySlots.removeFirst()] = card
         }
-        updateView()
-        
+        updateMapping()
     }
     
     private func updateMapping() {
-        
-        let cards = game.table
-        
-        for button in buttonToCard.keys {
-            if let card = buttonToCard[button], !game.table.contains(card) {
-                buttonsEmpty += [button]
-                buttonToCard.removeValue(forKey: button)
+        let cards = model.table
+        for button in uiButtonSlotsToCards.keys {
+            if let card = uiButtonSlotsToCards[button], !model.table.contains(card) {
+                uiButtonEmptySlots += [button]
+                uiButtonSlotsToCards.removeValue(forKey: button)
             }
             
         }
             
-        // add new one
+        // add new ones
         for card in cards {
-            if buttonToCard.key(for: card) == nil, buttonsEmpty.count > 0 {
-                buttonToCard[buttonsEmpty.removeFirst()] = card
+            if uiButtonSlotsToCards.key(for: card) == nil, uiButtonEmptySlots.count > 0 {
+                uiButtonSlotsToCards[uiButtonEmptySlots.removeFirst()] = card
             }
             
         }
-        
         updateView()
     }
     
     private func updateView() {
-        
         updateSetsFoundLabel()
-        updateScoreLabel()
+        updateTimeLabel()
         updateDealButton()
         
         for button in cardButtons {
             
             // Checking if button have card binding
-            if let card = buttonToCard[button] {
+            if let card = uiButtonSlotsToCards[button] {
                 
                 // Maintain card selection
-                if game.selected.contains(card) {
+                if model.selected.contains(card) {
                     button.layer.borderWidth = 3.0
                 } else {
                     button.layer.borderWidth = 0.0
@@ -145,8 +143,8 @@ class ViewController: UIViewController {
                     return
                 }
             } else {
-                button.setTitle("", for: .normal)
-                button.setAttributedTitle(NSAttributedString(string: ""), for: .normal)
+                button.setTitle(Text.empty, for: .normal)
+                button.setAttributedTitle(NSAttributedString(string: Text.empty), for: .normal)
                 button.backgroundColor = #colorLiteral(red: 0.3333333333, green: 0.6666666667, blue: 0.3333333333, alpha: 1)
                 button.layer.borderWidth = 0.0
             }
@@ -155,41 +153,26 @@ class ViewController: UIViewController {
     
     }
     
-    // TODO move to some prepare
     private func updateSetsFoundLabel() {
-        let count = game.setsFound
-        setsFoundLabel.text = "\(staticTexts.setsFoundLabel)\(count)"
+        let count = model.setsFound
+        setsFoundLabel.text = "\(Text.setsFoundLabel)\(count)"
     }
     
-    private func updateScoreLabel() {
-        let count = game.score
-        scoreLabel.text = "\(staticTexts.scoreLabel)\(count)"
+    @objc private func updateTimeLabel() {
+        let count = -Int(model.time.timeIntervalSinceNow)
+        
+        let minutes = count / 60
+        let seconds = count % 60
+        
+        let minutesString = (minutes > 9 ? "" : "0") + "\(minutes)"
+        let secondsString = (seconds > 9 ? "" : "0") + "\(seconds)"
+        
+        timeLabel.text = "\(Text.timeLabel)" + minutesString + ":" + secondsString
     }
     
     private func updateDealButton() {
-        dealButton.isEnabled = game.dealingAvailable
-        dealButton.setTitleColor(getDisabledColor(if: dealButton.isEnabled), for: .normal)
-    }
-    
-    private func getDisabledColor(if enabled: Bool) -> UIColor {
-        switch enabled {
-        case true:
-            return UIColor.white
-        case false:
-            return UIColor.lightText
-        }
-    }
-    
-    private func getSelectionColor(if match: Bool?) -> CGColor {
-        switch match {
-        case true:
-            return UIColor.green.cgColor
-        case false:
-            return UIColor.red.cgColor
-        default:
-            return UIColor.blue.cgColor
-        }
-        
+        dealButton.isEnabled = model.dealingAvailable
+        dealButton.setTitleColor( Color.button(if:dealButton.isEnabled), for: .normal)
     }
 
 }
