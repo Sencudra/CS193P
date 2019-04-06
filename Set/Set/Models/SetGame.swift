@@ -21,13 +21,15 @@ class SetGame {
     private(set) var table = [Card]()
     private(set) var selected = [Card]()
     private(set) var dealingAvailable = true
+    private(set) var set = [Card]()
     
     // MARK: - Private properties
+    
     private var deck = [Card]()
     private var deckSize: Int {
         return deck.count
     }
-        
+    
     // MARK: - Public methods
     
     init() {
@@ -75,6 +77,8 @@ class SetGame {
             let matched = checkSet(selected[0], selected[1], selected[2])
                         score(if: matched, evalFunc: { _ -> Int in
                 if matched {
+                    setsFound += 1
+                    set = []
                     return 3
                 } else {
                     return -5
@@ -87,14 +91,30 @@ class SetGame {
         
     }
     
-    public func getHelp() -> [Card]{
+    public func getHelp(){
         
-        let setOfCards = []
+        score -= 50
         
-        for card in table {
+        table.shuffle()
+        
+        for cardOne in table {
+            for cardTwo in table {
+                for cardThree in table {
+                    
+                    if cardOne != cardTwo && cardTwo != cardThree && checkSet(cardOne, cardTwo, cardThree){
+                        if set != [cardOne, cardTwo, cardThree] || set == [] {
+                            set = [cardOne, cardTwo, cardThree]
+                            return 
+                        }
+                        
+                    }
+                    
+                }
+                
+            }
             
         }
-        
+        set = []
     }
     
     // MARK: - Private methods

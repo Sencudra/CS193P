@@ -81,7 +81,8 @@ class ViewController: UIViewController {
     }
     
     @IBAction private func touchHelpButton(_ sender: Any) {
-        
+        model.getHelp()
+        updateView()
     }
     
     private func initCards() {
@@ -123,15 +124,18 @@ class ViewController: UIViewController {
             // Checking if button have card binding
             if let card = uiButtonSlotsToCards[button] {
                 
+                let highlighted = model.set.contains(card)
+                let selected = model.selected.contains(card)
+                
                 // Maintain card selection
-                if model.selected.contains(card) {
+                if selected || highlighted {
                     button.layer.borderWidth = 3.0
                 } else {
                     button.layer.borderWidth = 0.0
                 }
                 
                 button.layer.cornerRadius = 4.0
-                button.layer.borderColor = color
+                button.layer.borderColor = selected ? color : Color.yellow
                 
                 // Getting nsatributed string
                 if let attributedString = CardPresenter.getContent(for: card) {

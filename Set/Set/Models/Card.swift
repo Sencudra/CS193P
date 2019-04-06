@@ -32,5 +32,5 @@ extension Card {
         hasher.combine(color)
         hasher.combine(filling)
     }
-    
+        
 }
