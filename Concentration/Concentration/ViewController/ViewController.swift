@@ -12,10 +12,11 @@ class ViewController: UIViewController {
     
     // MARK: - Private types
     
+    private typealias text = String.StaticTexts
+    
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
     private var theme: Theme = Theme.randomTheme() {
-        
         didSet {
             emojiSet = theme.emojiSet
             self.view.backgroundColor = theme.backgroundColor
@@ -33,56 +34,40 @@ class ViewController: UIViewController {
     }
     
     private lazy var emojiSet: [String] = theme.emojiSet
-
     private lazy var emoji = [Int:String]()
-    
     private var numberOfPairsOfCards: Int {
         return cardButtons.count / 2
     }
     
     @IBOutlet private var cardButtons: [UIButton]!
-    
     @IBOutlet private weak var flipCountLabel: UILabel!
-    
     @IBOutlet private weak var scoreLabel: UILabel!
-    
     @IBOutlet private weak var newGameButton: UIButton!
     
     // MARK: - Semiprivate types
     
     private(set) var flipCount = 0 {
-        
         didSet {
-            flipCountLabel.text = String.StaticTexts.flipsLabelText + "\(flipCount)"
+            flipCountLabel.text = text.flipsLabelText + "\(flipCount)"
         }
         
     }
     
     private(set) var gameScore = 0 {
-        
         didSet {
-            scoreLabel.text = String.StaticTexts.scoreLabelText + "\(gameScore)"
+            scoreLabel.text = text.scoreLabelText + "\(gameScore)"
         }
         
     }
     
-    // MARK: - Public methods
+    // MARK: - Overrides
     
     override func viewDidLoad() {
         super.viewDidLoad()
         startNewGame()
     }
     
-    private func emoji(for card: Card) -> String {
-        
-        if emoji[card.identifier] == nil, emojiSet.count > 0 {
-            let randomIndex = Int.random(in: 0..<emojiSet.count)
-            emoji[card.identifier] = emojiSet.remove(at: randomIndex)
-        }
-        return emoji[card.identifier] ?? "?"
-    }
-    
-    // MARK: - Private methods
+    // MARK: - Private action methods
 
     @IBAction private func touch(_ sender: UIButton) {
         
@@ -103,7 +88,20 @@ class ViewController: UIViewController {
         updateViewFromModel()
     }
     
+    // MARK: - Private methods
+    
+    private func emoji(for card: Card) -> String {
+        if emoji[card.identifier] == nil, emojiSet.count > 0 {
+            let randomIndex = Int.random(in: 0..<emojiSet.count)
+            emoji[card.identifier] = emojiSet.remove(at: randomIndex)
+        }
+        return emoji[card.identifier] ?? "?"
+    }
+    
     private func updateViewFromModel() {
+        
+        var hasCardsNotMathed = false
+        
         for index in cardButtons.indices {
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -115,9 +113,33 @@ class ViewController: UIViewController {
                 button.setTitle(String.StaticTexts.blankLabelText, for: UIControl.State.normal)
                 button.backgroundColor = card.isMatched ? theme.backgroundColor : theme.cardColor
             }
+            
+            if !card.isMatched {
+                hasCardsNotMathed = true
+            }
         }
         flipCount = game.flips
         gameScore = game.score
+        
+        if !hasCardsNotMathed {
+            launchEndGameAlert()
+        }
+    }
+    
+    private func launchEndGameAlert() {
+        let alert = UIAlertController(title: text.endGameTitle, message: text.scoreLabelText + "\(gameScore)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: text.startNewGameText, style: .default, handler: { _ in
+            self.launchNewGame()
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    private func launchNewGame() {
+        game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+        theme = Theme.randomTheme()
+        emoji = [Int:String]()
+        
+        updateViewFromModel()
     }
 
 }

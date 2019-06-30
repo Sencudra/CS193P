@@ -13,7 +13,6 @@ struct Card {
     // MARK: - Public types
     
     var isFaceUp = false
-    
     var isMatched = false
     
     // MARK: - Semipublic types

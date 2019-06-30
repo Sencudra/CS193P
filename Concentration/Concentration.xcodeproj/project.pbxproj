@@ -18,6 +18,7 @@
 		00F247782232B156001639AE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00F247762232B156001639AE /* Main.storyboard */; };
 		00F2477A2232B15D001639AE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00F247792232B15D001639AE /* Assets.xcassets */; };
 		00F2477D2232B15D001639AE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00F2477B2232B15D001639AE /* LaunchScreen.storyboard */; };
+		31551F9522C8F7B1001276E5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31551F9422C8F7B1001276E5 /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		00F247792232B15D001639AE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		00F2477C2232B15D001639AE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		00F2477E2232B15D001639AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		31551F9422C8F7B1001276E5 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				0021FC932233F8360023AB68 /* Card.swift */,
 				00F2477E2232B15D001639AE /* Info.plist */,
 				008F485A2239936A009648AA /* Themes.swift */,
+				31551F9422C8F7B1001276E5 /* Configuration.swift */,
 			);
 			path = Concentration;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				008F485B2239936A009648AA /* Themes.swift in Sources */,
 				00F247752232B156001639AE /* ViewController.swift in Sources */,
 				00F247732232B156001639AE /* AppDelegate.swift in Sources */,
+				31551F9522C8F7B1001276E5 /* Configuration.swift in Sources */,
 				008F485422398AB6009648AA /* UIColor+Colors.swift in Sources */,
 				0021FC922233F7960023AB68 /* Concentration.swift in Sources */,
 				0021FC942233F8360023AB68 /* Card.swift in Sources */,

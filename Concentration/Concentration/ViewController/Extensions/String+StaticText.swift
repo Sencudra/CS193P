@@ -25,6 +25,14 @@ extension String {
             return "Score: "
         }
         
+        static var endGameTitle: String {
+            return "The End!"
+        }
+        
+        static var startNewGameText: String {
+            return "Start New Game"
+        }
+        
     }
     
 }
