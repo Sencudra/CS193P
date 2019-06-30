@@ -2,7 +2,7 @@
 //  String+StaticText.swift
 //  Concentration
 //
-//  Created by profile on 13/03/2019.
+//  Created by Vlad Tarasevich on 13/03/2019.
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
@@ -23,6 +23,14 @@ extension String {
         
         static var scoreLabelText: String {
             return "Score: "
+        }
+        
+        static var endGameTitle: String {
+            return "The End!"
+        }
+        
+        static var startNewGameText: String {
+            return "Start New Game"
         }
         
     }

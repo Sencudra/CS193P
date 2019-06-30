@@ -2,43 +2,27 @@
 //  Concentration.swift
 //  Concentration
 //
-//  Created by profile on 09/03/2019.
+//  Created by Vlad Tarasevich on 09/03/2019.
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
 import Foundation
 
-enum GameRules {
-    
-    static var penalty: Int {
-        return 1
-    }
-    
-    static var reward: Int {
-        return -5
-    }
-    
-}
 
 class Concentration {
 
     // MARK: - Public types
     
-    var score = Int.zero
-    
-    var flips = Int.zero
+    var score: Int
+    var flips: Int
     
     // MARK: - Semipublic types
     
-    private(set) var cards = [Card]()
+    private(set) var cards: [Card]
     
     // MARK: - Private types
     
-    private var penalty = GameRules.penalty
-    
-    private var reward = GameRules.reward
-    
-    private var timerToMeasureTimeElapsed: Date = Date()
+    private var timerToMeasureTimeElapsed: Date
     
     private var indexOfOnlyOneSelectedCard: Int? {
         get {
@@ -61,6 +45,12 @@ class Concentration {
     // MARK: - Init
     
     init(numberOfPairsOfCards: Int) {
+        score = Int.zero
+        flips = Int.zero
+        
+        cards = [Card]()
+        timerToMeasureTimeElapsed = Date()
+        
         for _ in 1...numberOfPairsOfCards {
             let card = Card()
             cards += [card, card]
@@ -79,16 +69,7 @@ class Concentration {
             if let selectedCardIndex = indexOfOnlyOneSelectedCard {
                 
                 // Matching cards found
-                if cards[selectedCardIndex].identifier == cards[index].identifier {
-                    cards[selectedCardIndex].isMatched = true
-                    cards[index].isMatched = true
-                
-                    score = score + reward - Int(timerToMeasureTimeElapsed.timeIntervalSinceNow)
-
-                    timerToMeasureTimeElapsed = Date()
-                } else {
-                    score += penalty
-                }
+                matchCards(at: selectedCardIndex, at: index)
                 cards[index].isFaceUp = true
                 
             // Two or none cards selected
@@ -98,6 +79,33 @@ class Concentration {
             flips += 1
         }
         
+    }
+    
+    // MARK: - Private methods
+    
+    private func matchCards(at firstIndex: Int, at secondIndex: Int) {
+        
+        if cards[firstIndex].identifier == cards[secondIndex].identifier {
+            cards[firstIndex].isMatched = true
+            cards[secondIndex].isMatched = true
+            addReward()
+        } else {
+            addPenalty()
+        }
+        
+    }
+    
+    private func addReward() {
+        addScore(of: GameRules.reward)
+    }
+    
+    private func addPenalty() {
+        addScore(of: GameRules.penalty)
+    }
+    
+    private func addScore(of value: Int) {
+        score = score + value + Int(timerToMeasureTimeElapsed.timeIntervalSinceNow)
+        timerToMeasureTimeElapsed = Date()
     }
     
 }

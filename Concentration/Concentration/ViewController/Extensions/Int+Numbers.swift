@@ -2,7 +2,7 @@
 //  Int+Numbers.swift
 //  Concentration
 //
-//  Created by profile on 14/03/2019.
+//  Created by Vlad Tarasevich on 14/03/2019.
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
