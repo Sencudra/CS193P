@@ -8,20 +8,20 @@
 
 import Foundation
 
-
-// TODO write contanins that retruns Int?
-
 class SetGame {
     
     // MARK: - Semiprivate properties
     
-    private(set) var time = Date()
+    private(set) var time: Date = Date()
     private(set) var score: Int = 0
     private(set) var setsFound: Int = 0
-    private(set) var table = [Card]()
-    private(set) var selected = [Card]()
-    private(set) var dealingAvailable = true
-    private(set) var set = [Card]()
+    
+    private(set) var set: [Card] = [Card]()
+    private(set) var table: [Card] = [Card]()
+    private(set) var selected: [Card] = [Card]()
+    
+    private(set) var dealingAvailable: Bool = true
+    
     
     // MARK: - Private properties
     
@@ -33,20 +33,11 @@ class SetGame {
     // MARK: - Public methods
     
     init() {
-        setsFound = 0
-        time = Date()
-        
         initializeDeck()
         deal(numberOf: gameRules.cardsDealingOnStart)
     }
     
-    public func dealMoreCards(){
-        deal(numberOf: gameRules.cardsDealingDuringGame)
-        score -= 10
-    }
-    
     public func touch(card: Card) -> Bool? {
-        
         assert(table.contains(card), "SetGame.touchCard() : Card not found at the table!")
         
         if selected.count == gameRules.cardsToSelect {
@@ -91,10 +82,13 @@ class SetGame {
         
     }
     
+    public func dealMoreCards(){
+        deal(numberOf: gameRules.cardsDealingDuringGame)
+        score += gameRules.onDealingMoreCards
+    }
+    
     public func getHelp(){
-        
-        score -= 50
-        
+        score += gameRules.onGettingHelp
         table.shuffle()
         
         for cardOne in table {
@@ -119,6 +113,18 @@ class SetGame {
     
     // MARK: - Private methods
     
+    private func resetGameVariables() {
+        time = Date()
+        score = 0
+        setsFound = 0
+        
+        set = [Card]()
+        table = [Card]()
+        selected = [Card]()
+        
+        dealingAvailable = true
+    }
+    
     private func select(card: Card) {
         
         if table.contains(card) {
@@ -130,6 +136,7 @@ class SetGame {
                     selected.remove(at: index)
                     return
                 }
+                
             }
             
             // Select card
@@ -137,7 +144,7 @@ class SetGame {
                 selected += [card]
                 score -= 1
             } else {
-                assertionFailure("SetGame.selectCard(at \(index)) : Number of selected cards exceeded possible value")
+                assertionFailure("SetGame.selectCard(at \(String(describing: index))) : Number of selected cards exceeded possible value")
             }
             
         }
@@ -162,7 +169,6 @@ class SetGame {
             }
             
         }
-        
         deck.shuffle()
         
         assert({12...}().contains(deckSize) && deckSize % 3 == 0, "Invalid number of cards in a deck! Must be in 12... and divisible by 3")

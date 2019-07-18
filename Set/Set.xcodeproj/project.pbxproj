@@ -13,6 +13,8 @@
 		3114349B224CCAE700645B5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3114349A224CCAE700645B5F /* Assets.xcassets */; };
 		3114349E224CCAE700645B5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3114349C224CCAE700645B5F /* LaunchScreen.storyboard */; };
 		311434A6224CCD0B00645B5F /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311434A5224CCD0B00645B5F /* SetGame.swift */; };
+		3174E68622D2555F00C47C6E /* SymbolVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3174E68522D2555F00C47C6E /* SymbolVIew.swift */; };
+		31A7258222D1469F0011914A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A7258122D1469F0011914A /* CardView.swift */; };
 		31F589AE22500BF1006B5104 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F589AD22500BF1006B5104 /* Card.swift */; };
 		31F589B022500FC9006B5104 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F589AF22500FC9006B5104 /* GameRules.swift */; };
 		31F589B422501F0E006B5104 /* CardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F589B322501F0E006B5104 /* CardPresenter.swift */; };
@@ -29,6 +31,8 @@
 		3114349D224CCAE700645B5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3114349F224CCAE700645B5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		311434A5224CCD0B00645B5F /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
+		3174E68522D2555F00C47C6E /* SymbolVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolVIew.swift; sourceTree = "<group>"; };
+		31A7258122D1469F0011914A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		31F589AD22500BF1006B5104 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		31F589AF22500FC9006B5104 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
 		31F589B322501F0E006B5104 /* CardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresenter.swift; sourceTree = "<group>"; };
@@ -100,6 +104,8 @@
 				31F93F882258BDBC005AACF5 /* Extension */,
 				31F589B322501F0E006B5104 /* CardPresenter.swift */,
 				31143495224CCAE500645B5F /* ViewController.swift */,
+				31A7258122D1469F0011914A /* CardView.swift */,
+				3174E68522D2555F00C47C6E /* SymbolVIew.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,8 +200,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				31143496224CCAE500645B5F /* ViewController.swift in Sources */,
+				31A7258222D1469F0011914A /* CardView.swift in Sources */,
 				31143494224CCAE500645B5F /* AppDelegate.swift in Sources */,
 				31F589B022500FC9006B5104 /* GameRules.swift in Sources */,
+				3174E68622D2555F00C47C6E /* SymbolVIew.swift in Sources */,
 				311434A6224CCD0B00645B5F /* SetGame.swift in Sources */,
 				31F589B422501F0E006B5104 /* CardPresenter.swift in Sources */,
 				31F93F8A2258CA56005AACF5 /* UIColor+Color.swift in Sources */,

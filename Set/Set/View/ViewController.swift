@@ -17,6 +17,8 @@ class ViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak private var cardView: CardView!
+    
     @IBOutlet weak private var timeLabel: UILabel!
     @IBOutlet weak private var setsFoundLabel: UILabel!
     
@@ -43,8 +45,20 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        sheduledTimerWithTimeInterval()
-        initCards()
+        //sheduledTimerWithTimeInterval()
+        //initCards()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        if UIDevice.current.orientation.isLandscape {
+            print("Landscape")
+            cardView.isHorizontal = true
+        } else {
+            print("Portrait")
+            cardView.isHorizontal = false
+        }
+        cardView.setNeedsLayout()
     }
     
     private func sheduledTimerWithTimeInterval() {
