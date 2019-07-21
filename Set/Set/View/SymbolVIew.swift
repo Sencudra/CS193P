@@ -11,44 +11,94 @@ import UIKit
 
 class SymbolView: UIView {
     
-    var symbol: Symbol = .Rhombus { didSet { setNeedsLayout(); setNeedsDisplay() } }
-    var color: UIColor = UIColor.SymbolColor.purple { didSet { setNeedsLayout(); setNeedsDisplay() } }
-    var filling: Filling = .Partly { didSet { setNeedsLayout(); setNeedsDisplay() } }
+    // MARK: - Private properties
+    
+    private let symbol: Symbol
+    private let filling: Filling
+    private let color: UIColor
+    
+    private var orientation: CardView.Orientation {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+
+    // MARK: - Initializers
+    
+    init(frame: CGRect, symbol: Symbol, filling: Filling, color: UIColor) {
+        self.symbol = symbol
+        self.color = color
+        self.filling = filling
+        self.orientation = .Horizontal
+        super.init(frame: frame)
+        
+        backgroundColor = UIColor.clear
+    }
+    
+    // No need to use this init, as view is created completely programmatically
+    required init?(coder aDecoder: NSCoder) {
+        preconditionFailure("SymbolView: required init?(coder aDecoder: NSCoder) not implemented!")
+    }
     
     // MARK: - Overrides
     
     override func draw(_ rect: CGRect) {
+        color.setFill()
+        color.setStroke()
         createPath()
+    }
+    
+    // MARK: - Public methods
+    
+    public func setOrientation(as orientation: CardView.Orientation) {
+        self.orientation = orientation
     }
     
     // MARK: - Private methods
     
     private func createPath() {
-        color.setFill()
-        color.setStroke()
-        
         let path = symbol.createPath()
-        
-        // Adjust path scale
-        var scale: CGFloat
-        var diff_x: CGFloat { return bounds.size.width - path.bounds.size.width }
-        var diff_y: CGFloat { return bounds.size.height - path.bounds.size.height }
-        if diff_x < diff_y {
-            scale = Ratio.pathBoundsToBoundSize * bounds.size.width / path.bounds.size.width
-        } else {
-            scale = Ratio.pathBoundsToBoundSize * bounds.size.height / path.bounds.size.height
-        }
-        path.apply(CGAffineTransform(scaleX: scale, y: scale))
-        
-        // Adjust position
-        let offset_x = diff_x / 2
-        let offset_y = diff_y / 2
-        path.apply(CGAffineTransform(translationX: offset_x, y: offset_y))
+    
+        adjustOrientation(of: path)
+        adjustScale(of: path)
+        adjustPosition(of: path)
         
         path.lineWidth = lineWidth
         path.stroke()
         
         setFilling(for: path)
+    }
+    
+    private func getBoundsDifferenceToView(of path: UIBezierPath) -> (diffX: CGFloat, diffY: CGFloat) {
+        return (bounds.size.width - path.bounds.size.width, bounds.size.height - path.bounds.size.height)
+    }
+    
+    private func adjustScale(of path: UIBezierPath) {
+        var scale: CGFloat
+        let (diffX, diffY) = getBoundsDifferenceToView(of: path)
+        if diffX < diffY {
+            scale = Ratio.pathBoundsToBoundSize * bounds.size.width / path.bounds.size.width
+        } else {
+            scale = Ratio.pathBoundsToBoundSize * bounds.size.height / path.bounds.size.height
+        }
+        path.apply(CGAffineTransform(scaleX: scale, y: scale))
+    }
+    
+    private func adjustPosition(of path: UIBezierPath) {
+        let (diffX, diffY) = getBoundsDifferenceToView(of: path)
+        path.apply(CGAffineTransform(translationX: path.bounds.minX, y: path.bounds.minY).inverted())
+        path.apply(CGAffineTransform(translationX: diffX / 2, y: diffY / 2))
+    }
+    
+    private func adjustOrientation(of path: UIBezierPath) {
+    
+        if orientation == .Vertical {
+            let pathCenter = CGPoint(x: path.bounds.midX, y: path.bounds.midY)
+            path.apply(CGAffineTransform(translationX: pathCenter.x, y: pathCenter.y).inverted())
+            path.apply(CGAffineTransform(rotationAngle: CGFloat.pi/2))
+            path.apply(CGAffineTransform(translationX: pathCenter.x, y: pathCenter.y))
+        }
+
     }
     
     private func setFilling(for path: UIBezierPath) {
@@ -81,10 +131,10 @@ class SymbolView: UIView {
     
 }
 
-// MARK: - Extension SymbolVIew
+// MARK: - Extension SymbolView
 
 extension SymbolView {
- 
+    
     enum Filling {
         case Full
         case Partly
@@ -97,9 +147,10 @@ extension SymbolView {
         case RoundedRectangle
         case Wave
         
-        // MARK: - Methods
+        // MARK: - Symbol functions
         
         func createPath() -> UIBezierPath{
+            
             switch self {
             case .Rhombus:
                 return createRhombusPath()
@@ -108,17 +159,18 @@ extension SymbolView {
             case .Wave:
                 return createWavePath()
             }
+
         }
         
-        // MARK: - Private functions
+        // MARK: - Symbol private functions
         
         private func createRoundedRectanglePath() -> UIBezierPath {
             let path = UIBezierPath()
-            path.move(to: CGPoint(x: 210.0, y: 5.0))
-            path.addLine(to: CGPoint(x: 63.0, y: 5.0))
-            path.addArc(withCenter: CGPoint(x: 63.0, y: 68.0), radius: CGFloat(63.0), startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
-            path.addLine(to: CGPoint(x: 210.0, y: 131.0))
-            path.addArc(withCenter: CGPoint(x: 210.0, y: 68.0), radius: CGFloat(63.0), startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
+            path.move(to: CGPoint(x: 210.0, y: 0.0))
+            path.addLine(to: CGPoint(x: 63.0, y: 0.0))
+            path.addArc(withCenter: CGPoint(x: 63.0, y: 63.0), radius: CGFloat(63.0), startAngle: 3*CGFloat.pi/2, endAngle: CGFloat.pi/2, clockwise: false)
+            path.addLine(to: CGPoint(x: 210.0, y: 126.0))
+            path.addArc(withCenter: CGPoint(x: 210.0, y: 63.0), radius: CGFloat(63.0), startAngle: CGFloat.pi/2, endAngle: 3*CGFloat.pi/2, clockwise: false)
             path.close()
             return path
         }
@@ -150,6 +202,8 @@ extension SymbolView {
         }
         
     }
+    
+    // MARK: - Ratio
     
     private struct Ratio {
     

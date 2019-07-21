@@ -10,85 +10,62 @@ import Foundation
 import UIKit
 
 class CardView: UIView {
+
+    // MARK: - Private Properties
     
-    // MARK: - Properties
+    private let numberOfSymbols: Int
     
-    var numberOfSymbols: Int = 3 { didSet { setNeedsLayout(); setNeedsDisplay() } }
+    private var symbolViews: [SymbolView]
+
+    private var orientation: Orientation
+
+    // MARK: - Initializers
     
-    var isHorizontal = false
+    init(numberOfSymbols: Int) {
+        symbolViews = [SymbolView]()
+        orientation = .Horizontal
+        self.numberOfSymbols = numberOfSymbols
+        super.init(frame: .zero)
+        createSymbolViews()
+        
+        backgroundColor = UIColor.clear
+    }
     
-    private lazy var symbolViews = isHorizontal ? createSymbolViewsHorizontal() : createSymbolViewsVertical()
+    // No need to use this init, as view is created completely programmatically
+    required init?(coder aDecoder: NSCoder) {
+        preconditionFailure("CardView: required init?(coder aDecoder: NSCoder) not implemented!")
+    }
     
     // MARK: - Overrides
     
     override func draw(_ rect: CGRect) {
         prepareCard()
         
-        for _ in symbolViews {
-            
-        }
+        // TODO remove carefully
+        for _ in symbolViews {  }
+
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        symbolViews = isHorizontal ? createSymbolViewsHorizontal() : createSymbolViewsVertical()
+        if orientation == .Horizontal {
+            layoutSymbolViewsHorizontally()
+        } else {
+            layoutSymbolViewsVertically()
+        }
+
+    }
+    
+    // MARK: - Internal methods
+    
+    func setOrientation(as orientation: CardView.Orientation) {
+        self.orientation = orientation
+        setNeedsLayout()
+        setNeedsDisplay()
     }
     
     // MARK: - Private methods
-    
-    private func clearAllSubviews() {
-        for subView in self.subviews as [UIView] {
-            subView.removeFromSuperview()
-        }
-    }
-    
-    private func update() {
-        setNeedsLayout(); setNeedsDisplay()
-    }
-    
-    private func createSymbolViewsVertical() -> [SymbolView] {
-        print(bounds.size.width, bounds.size.height)
-        clearAllSubviews()
-        
-        let width = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.width
-        let height = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.height / CGFloat(numberOfSymbols)
-        let offsetX = (bounds.size.width - width) / 2
-        let offsetY = (bounds.size.height - height * CGFloat(numberOfSymbols)) / 2
-        
-        let symbolViews = Array(0..<numberOfSymbols).map { index -> SymbolView in
-            let x = offsetX
-            let y = offsetY + (CGFloat(index) * height)
-            let frame = CGRect(x: x, y: y, width: width, height: height)
-            let view = SymbolView(frame: frame)
-            view.backgroundColor = UIColor.clear
-            addSubview(view)
-            return view
-        }
-        return symbolViews
-    }
-    
-    private func createSymbolViewsHorizontal() -> [SymbolView] {
-
-        clearAllSubviews()
-        
-        let width = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.width / CGFloat(numberOfSymbols)
-        let height = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.height
-        
-        let offsetX = (bounds.size.width - width * CGFloat(numberOfSymbols)) / 2
-        let offsetY = (bounds.size.height - height) / 2
-        
-        let symbolViews = Array(0..<numberOfSymbols).map { index -> SymbolView in
-            let x = offsetX + (CGFloat(index) * width)
-            let y = offsetY
-            let frame = CGRect(x: x, y: y, width: width, height: height)
-            let view = SymbolView(frame: frame)
-            view.backgroundColor = UIColor.clear
-            addSubview(view)
-            return view
-        }
-        return symbolViews
-    }
     
     private func prepareCard() {
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: 10)
@@ -97,9 +74,62 @@ class CardView: UIView {
         roundedRect.fill()
     }
     
+    private func createSymbolViews() {
+        let symbol = SymbolView.Symbol.Wave
+        let filling = SymbolView.Filling.Partly
+        let color = UIColor.SymbolColor.purple
+        
+        for _ in 0..<numberOfSymbols {
+            let view = SymbolView(frame: .zero,
+                                  symbol: symbol,
+                                  filling: filling,
+                                  color: color)
+            addSubview(view)
+            symbolViews.append(view)
+        }
+
+    }
+    
+    private func layoutSymbolViewsVertically() {
+        let width = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.width
+        let height = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.height / CGFloat(numberOfSymbols)
+        let offsetX = (bounds.size.width - width) / 2
+        let offsetY = (bounds.size.height - height * CGFloat(numberOfSymbols)) / 2
+        
+        for (index, symbolView) in symbolViews.enumerated() {
+            let x = offsetX
+            let y = offsetY + (CGFloat(index) * height)
+            symbolView.frame = CGRect(x: x, y: y, width: width, height: height)
+            symbolView.setOrientation(as: .Horizontal)
+        }
+
+    }
+    
+    private func layoutSymbolViewsHorizontally() {
+        let width = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.width / CGFloat(numberOfSymbols)
+        let height = (1 - SizeRatio.imageOffsetToBounds) * bounds.size.height
+        let offsetX = (bounds.size.width - width * CGFloat(numberOfSymbols)) / 2
+        let offsetY = (bounds.size.height - height) / 2
+        
+        for (index, symbolView) in symbolViews.enumerated() {
+            let x = offsetX + (CGFloat(index) * width)
+            let y = offsetY
+            symbolView.frame = CGRect(x: x, y: y, width: width, height: height)
+            symbolView.setOrientation(as: .Vertical)
+        }
+
+    }
+
 }
 
+// MARK: - Extension CardView
+
 extension CardView {
+    
+    enum Orientation {
+        case Horizontal
+        case Vertical
+    }
     
     private struct SizeRatio {
         
@@ -115,16 +145,6 @@ extension CardView {
     
     private var cornerRadius: CGFloat {
         return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
-    }
-    
-}
-
-extension CGRect {
-    
-    func zoom(by scale: CGFloat) -> CGRect {
-        let newWidth = width * scale
-        let newHeight = height * scale
-        return insetBy(dx: (width - newWidth) / 2, dy: (height - newHeight) / 2)
     }
     
 }
