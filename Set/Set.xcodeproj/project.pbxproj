@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035A853722E89446001E40A9 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A853622E89446001E40A9 /* BoardView.swift */; };
+		03A8001222E8608E00AC9DB1 /* MyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8001122E8608E00AC9DB1 /* MyGrid.swift */; };
 		31143494224CCAE500645B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143493224CCAE500645B5F /* AppDelegate.swift */; };
 		31143496224CCAE500645B5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143495224CCAE500645B5F /* ViewController.swift */; };
 		3114349B224CCAE700645B5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3114349A224CCAE700645B5F /* Assets.xcassets */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		035A853622E89446001E40A9 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		03A8001122E8608E00AC9DB1 /* MyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrid.swift; sourceTree = "<group>"; };
 		31143490224CCAE500645B5F /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31143493224CCAE500645B5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		31143495224CCAE500645B5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,8 +106,10 @@
 				31F93F882258BDBC005AACF5 /* Extension */,
 				31F589B322501F0E006B5104 /* CardPresenter.swift */,
 				31143495224CCAE500645B5F /* ViewController.swift */,
+				035A853622E89446001E40A9 /* BoardView.swift */,
 				31A7258122D1469F0011914A /* CardView.swift */,
 				3174E68522D2555F00C47C6E /* SymbolVIew.swift */,
+				03A8001122E8608E00AC9DB1 /* MyGrid.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -198,11 +204,13 @@
 				31143496224CCAE500645B5F /* ViewController.swift in Sources */,
 				31A7258222D1469F0011914A /* CardView.swift in Sources */,
 				31143494224CCAE500645B5F /* AppDelegate.swift in Sources */,
+				03A8001222E8608E00AC9DB1 /* MyGrid.swift in Sources */,
 				31F589B022500FC9006B5104 /* GameRules.swift in Sources */,
 				3174E68622D2555F00C47C6E /* SymbolVIew.swift in Sources */,
 				311434A6224CCD0B00645B5F /* SetGame.swift in Sources */,
 				31F589B422501F0E006B5104 /* CardPresenter.swift in Sources */,
 				31F93F8A2258CA56005AACF5 /* UIColor+Color.swift in Sources */,
+				035A853722E89446001E40A9 /* BoardView.swift in Sources */,
 				31F93F872258BDAE005AACF5 /* String+StaticTexts.swift in Sources */,
 				31F589AE22500BF1006B5104 /* Card.swift in Sources */,
 			);
@@ -343,13 +351,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZPNFSD9RWC;
+				DEVELOPMENT_TEAM = W2ULJ6L6WN;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vstarasevich.Set;
+				PRODUCT_BUNDLE_IDENTIFIER = work.vstarasevich.Set;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -361,13 +369,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = ZPNFSD9RWC;
+				DEVELOPMENT_TEAM = W2ULJ6L6WN;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = vstarasevich.Set;
+				PRODUCT_BUNDLE_IDENTIFIER = work.vstarasevich.Set;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

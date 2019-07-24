@@ -19,8 +19,10 @@ class ViewController: UIViewController {
     
     private var model: SetGame = SetGame()
     private var timer: Timer = Timer()
-    //private var uiButtonSlotsToCards: [UIButton:Card] = [UIButton:Card]()
     
+    private var views: [CardView] = [CardView]()
+
+    //private var uiButtonSlotsToCards: [UIButton:Card] = [UIButton:Card]()
     
     // TODO refactor
     private let cardView: CardView = {
@@ -47,11 +49,26 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         
-        view.addSubview(cardView)
-        cardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
-        cardView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
-        cardView.topAnchor.constraint(equalTo: view.topAnchor, constant: 20).isActive = true
-        cardView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        //view.addSubview(cardView)
+        let grid = Grid(layout: .fixedCellSize(CGSize(width: 100, height: 200)),
+                        frame: view.bounds)
+        
+        for index in 0...grid.cellCount {
+            let subview = CardView(numberOfSymbols: 3)
+            
+            if UIDevice.current.orientation.isLandscape {
+                subview.setOrientation(as: .Horizontal)
+            } else {
+                subview.setOrientation(as: .Vertical)
+            }
+            
+            if let frame = grid[index] {
+                subview.frame = frame
+            }
+            subview.backgroundColor = UIColor.red
+            view.addSubview(subview)
+            views.append(subview)
+        }
         
         //sheduledTimerWithTimeInterval()
         //initCards()
