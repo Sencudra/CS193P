@@ -11,26 +11,20 @@ struct Card: Equatable, Hashable {
     // MARK: - Internal properties
     
     let numberOfSymbols: Int
-    let symbol: Int
-    let color: Int
-    let filling: Int
-    
+    let symbol: Symbol
+
 }
 
 extension Card {
     
     static func == (lhs: Card, rhs: Card) -> Bool {
         return  lhs.numberOfSymbols == rhs.numberOfSymbols &&
-                lhs.symbol == rhs.symbol &&
-                lhs.color == rhs.color &&
-                lhs.filling == rhs.filling
+                lhs.symbol == rhs.symbol
     }
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(numberOfSymbols)
         hasher.combine(symbol)
-        hasher.combine(color)
-        hasher.combine(filling)
     }
         
 }

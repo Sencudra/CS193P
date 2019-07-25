@@ -12,30 +12,17 @@ class ViewController: UIViewController {
     
     // MARK: - Private types
     
-    private typealias Text = String.StaticTexts
-    private typealias Color = UIColor.Color
+//    private typealias Text = String.StaticTexts
+//    private typealias Color = UIColor.Color
     
     // MARK: - Private properties
     
     private var model: SetGame = SetGame()
     private var timer: Timer = Timer()
     
-    private var views: [CardView] = [CardView]()
+    //private var views: [CardView] = [CardView]()
 
     //private var uiButtonSlotsToCards: [UIButton:Card] = [UIButton:Card]()
-    
-    // TODO refactor
-    private let cardView: CardView = {
-        let view = CardView(numberOfSymbols: 3)
-        
-        if UIDevice.current.orientation.isLandscape {
-            view.setOrientation(as: .Horizontal)
-        } else {
-            view.setOrientation(as: .Vertical)
-        }
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
     
     // MARK: - Overrides
     
@@ -49,39 +36,44 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         
-        //view.addSubview(cardView)
-        let grid = Grid(layout: .fixedCellSize(CGSize(width: 100, height: 200)),
-                        frame: view.bounds)
+        let symbol = Symbol(type: 1, color: 1, filling: 1)
+        let card = Card(numberOfSymbols: 2, symbol: symbol)
         
-        for index in 0...grid.cellCount {
-            let subview = CardView(numberOfSymbols: 3)
-            
-            if UIDevice.current.orientation.isLandscape {
-                subview.setOrientation(as: .Horizontal)
-            } else {
-                subview.setOrientation(as: .Vertical)
-            }
-            
-            if let frame = grid[index] {
-                subview.frame = frame
-            }
-            subview.backgroundColor = UIColor.red
-            view.addSubview(subview)
-            views.append(subview)
-        }
+        let cardViewController = CardViewController(frame: view.bounds, model: card)
         
-        //sheduledTimerWithTimeInterval()
-        //initCards()
+        view.addSubview(cardViewController.view)
+        addChild(cardViewController)
+        cardViewController.didMove(toParent: self)
+        
+//        view.addSubview(cardView)
+//        let grid = Grid(layout: .fixedCellSize(CGSize(width: 100, height: 200)),
+//                        frame: view.bounds)
+        
+//        for index in 0...grid.cellCount {
+//            let subview = CardView(numberOfSymbols: 3)
+//
+//            if UIDevice.current.orientation.isLandscape {
+//                subview.setOrientation(as: .Horizontal)
+//            } else {
+//                subview.setOrientation(as: .Vertical)
+//            }
+//
+//            if let frame = grid[index] {
+//                subview.frame = frame
+//            }
+//            subview.backgroundColor = UIColor.red
+//            view.addSubview(subview)
+//            views.append(subview)
+//        }
+
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         if UIDevice.current.orientation.isLandscape {
             print("Landscape")
-            cardView.setOrientation(as: .Horizontal)
         } else {
             print("Portrait")
-            cardView.setOrientation(as: .Vertical)
         }
         
     }

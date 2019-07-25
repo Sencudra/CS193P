@@ -6,7 +6,6 @@
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 class SymbolView: UIView {
@@ -17,7 +16,7 @@ class SymbolView: UIView {
     private let filling: Filling
     private let color: UIColor
     
-    private var orientation: CardView.Orientation {
+    private var orientation: UIDevice.Orientation? {
         didSet {
             setNeedsDisplay()
         }
@@ -29,7 +28,7 @@ class SymbolView: UIView {
         self.symbol = symbol
         self.color = color
         self.filling = filling
-        self.orientation = .Horizontal
+        self.orientation = nil
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear
@@ -50,7 +49,11 @@ class SymbolView: UIView {
     
     // MARK: - Public methods
     
-    public func setOrientation(as orientation: CardView.Orientation) {
+    public func setOrientation(as orientation: UIDevice.Orientation) {
+        
+        if let superView = self.superview {
+            self.frame = superView.frame
+        }
         self.orientation = orientation
     }
     
@@ -92,7 +95,7 @@ class SymbolView: UIView {
     
     private func adjustOrientation(of path: UIBezierPath) {
     
-        if orientation == .Vertical {
+        if orientation == .Portrait {
             let pathCenter = CGPoint(x: path.bounds.midX, y: path.bounds.midY)
             path.apply(CGAffineTransform(translationX: pathCenter.x, y: pathCenter.y).inverted())
             path.apply(CGAffineTransform(rotationAngle: CGFloat.pi/2))

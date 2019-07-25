@@ -158,8 +158,9 @@ class SetGame {
             for color in range {
                 for symbol in range {
                     for filling in range {
-       
-                        let card = Card(numberOfSymbols: number, symbol: symbol, color: color, filling: filling)
+                        
+                        let card = Card(numberOfSymbols: number,
+                                        symbol: Symbol(type: symbol, color: color, filling: filling))
                         deck += [card]
                         
                     }
@@ -195,9 +196,9 @@ class SetGame {
     private func checkSet(_ first: Card,_ second: Card,_ third: Card) -> Bool {
         
         let ruleNumber = Set([first.numberOfSymbols, second.numberOfSymbols, third.numberOfSymbols]).count
-        let ruleSymbol = Set([first.symbol, second.symbol, third.symbol]).count
-        let ruleColor = Set([first.color, second.color, third.color]).count
-        let ruleFilling = Set([first.filling, second.filling, third.filling]).count
+        let ruleSymbol = Set([first.symbol.type, second.symbol.type, third.symbol.type]).count
+        let ruleColor = Set([first.symbol.color, second.symbol.color, third.symbol.color]).count
+        let ruleFilling = Set([first.symbol.filling, second.symbol.filling, third.symbol.filling]).count
         
         let checkRule = { $0 == 1 || $0 == gameRules.cardsToSelect }
         

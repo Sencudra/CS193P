@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		035A853722E89446001E40A9 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 035A853622E89446001E40A9 /* BoardView.swift */; };
+		03A0709822E9CC0B007B2C06 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0709722E9CC0B007B2C06 /* CardViewController.swift */; };
+		03A0709A22E9E608007B2C06 /* SymbolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0709922E9E608007B2C06 /* SymbolViewController.swift */; };
+		03A0709C22E9E6EB007B2C06 /* Symbol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0709B22E9E6EB007B2C06 /* Symbol.swift */; };
+		03A070A022E9F06F007B2C06 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A0709F22E9F06F007B2C06 /* Orientation.swift */; };
 		03A8001222E8608E00AC9DB1 /* MyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A8001122E8608E00AC9DB1 /* MyGrid.swift */; };
 		31143494224CCAE500645B5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143493224CCAE500645B5F /* AppDelegate.swift */; };
 		31143496224CCAE500645B5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31143495224CCAE500645B5F /* ViewController.swift */; };
@@ -18,13 +22,16 @@
 		31A7258222D1469F0011914A /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A7258122D1469F0011914A /* CardView.swift */; };
 		31F589AE22500BF1006B5104 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F589AD22500BF1006B5104 /* Card.swift */; };
 		31F589B022500FC9006B5104 /* GameRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F589AF22500FC9006B5104 /* GameRules.swift */; };
-		31F589B422501F0E006B5104 /* CardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F589B322501F0E006B5104 /* CardPresenter.swift */; };
 		31F93F872258BDAE005AACF5 /* String+StaticTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F93F862258BDAE005AACF5 /* String+StaticTexts.swift */; };
 		31F93F8A2258CA56005AACF5 /* UIColor+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31F93F892258CA56005AACF5 /* UIColor+Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		035A853622E89446001E40A9 /* BoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardView.swift; sourceTree = "<group>"; };
+		03A0709722E9CC0B007B2C06 /* CardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewController.swift; sourceTree = "<group>"; };
+		03A0709922E9E608007B2C06 /* SymbolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolViewController.swift; sourceTree = "<group>"; };
+		03A0709B22E9E6EB007B2C06 /* Symbol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Symbol.swift; sourceTree = "<group>"; };
+		03A0709F22E9F06F007B2C06 /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		03A8001122E8608E00AC9DB1 /* MyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyGrid.swift; sourceTree = "<group>"; };
 		31143490224CCAE500645B5F /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		31143493224CCAE500645B5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -37,7 +44,6 @@
 		31A7258122D1469F0011914A /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		31F589AD22500BF1006B5104 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		31F589AF22500FC9006B5104 /* GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRules.swift; sourceTree = "<group>"; };
-		31F589B322501F0E006B5104 /* CardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPresenter.swift; sourceTree = "<group>"; };
 		31F93F862258BDAE005AACF5 /* String+StaticTexts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+StaticTexts.swift"; sourceTree = "<group>"; };
 		31F93F892258CA56005AACF5 /* UIColor+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -72,9 +78,9 @@
 		31143492224CCAE500645B5F /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				31F93F882258BDBC005AACF5 /* Extension */,
 				3139000F2251089D00CBD6B7 /* Storyboards */,
-				3139000E2251089000CBD6B7 /* View */,
-				3139000D2251087400CBD6B7 /* Models */,
+				3139000E2251089000CBD6B7 /* Source */,
 				311434A7224D65E800645B5F /* Support */,
 				3114349F224CCAE700645B5F /* Info.plist */,
 			);
@@ -90,28 +96,23 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		3139000D2251087400CBD6B7 /* Models */ = {
+		3139000E2251089000CBD6B7 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				311434A5224CCD0B00645B5F /* SetGame.swift */,
-				31F589AD22500BF1006B5104 /* Card.swift */,
-				31F589AF22500FC9006B5104 /* GameRules.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		3139000E2251089000CBD6B7 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				31F93F882258BDBC005AACF5 /* Extension */,
-				31F589B322501F0E006B5104 /* CardPresenter.swift */,
 				31143495224CCAE500645B5F /* ViewController.swift */,
 				035A853622E89446001E40A9 /* BoardView.swift */,
 				31A7258122D1469F0011914A /* CardView.swift */,
+				03A0709922E9E608007B2C06 /* SymbolViewController.swift */,
+				03A0709722E9CC0B007B2C06 /* CardViewController.swift */,
+				03A0709F22E9F06F007B2C06 /* Orientation.swift */,
 				3174E68522D2555F00C47C6E /* SymbolVIew.swift */,
+				311434A5224CCD0B00645B5F /* SetGame.swift */,
+				31F589AF22500FC9006B5104 /* GameRules.swift */,
+				31F589AD22500BF1006B5104 /* Card.swift */,
+				03A0709B22E9E6EB007B2C06 /* Symbol.swift */,
 				03A8001122E8608E00AC9DB1 /* MyGrid.swift */,
 			);
-			path = View;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		3139000F2251089D00CBD6B7 /* Storyboards */ = {
@@ -208,10 +209,13 @@
 				31F589B022500FC9006B5104 /* GameRules.swift in Sources */,
 				3174E68622D2555F00C47C6E /* SymbolVIew.swift in Sources */,
 				311434A6224CCD0B00645B5F /* SetGame.swift in Sources */,
-				31F589B422501F0E006B5104 /* CardPresenter.swift in Sources */,
+				03A070A022E9F06F007B2C06 /* Orientation.swift in Sources */,
 				31F93F8A2258CA56005AACF5 /* UIColor+Color.swift in Sources */,
 				035A853722E89446001E40A9 /* BoardView.swift in Sources */,
+				03A0709822E9CC0B007B2C06 /* CardViewController.swift in Sources */,
+				03A0709C22E9E6EB007B2C06 /* Symbol.swift in Sources */,
 				31F93F872258BDAE005AACF5 /* String+StaticTexts.swift in Sources */,
+				03A0709A22E9E608007B2C06 /* SymbolViewController.swift in Sources */,
 				31F589AE22500BF1006B5104 /* Card.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
