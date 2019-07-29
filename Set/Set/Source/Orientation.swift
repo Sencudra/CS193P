@@ -13,6 +13,19 @@ extension UIDevice {
     enum Orientation {
         case Landscape
         case Portrait
+        
+        static var isLandscape: Bool {
+            return UIDevice.current.orientation.isValidInterfaceOrientation
+                ? UIDevice.current.orientation.isLandscape
+                : UIApplication.shared.statusBarOrientation.isLandscape
+        }
+        
+        static var isPortrait: Bool {
+            return UIDevice.current.orientation.isValidInterfaceOrientation
+                ? UIDevice.current.orientation.isPortrait
+                : UIApplication.shared.statusBarOrientation.isPortrait
+        }
+        
     }
     
 }

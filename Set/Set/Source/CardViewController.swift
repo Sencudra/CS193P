@@ -44,7 +44,9 @@ class CardViewController: UIViewController {
                 addChild(controller)
                 controller.didMove(toParent: self)
             }
+
         }
+
     }
 
     required init?(coder: NSCoder) {
@@ -55,39 +57,47 @@ class CardViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let cardView = cardView {
+            cardView.setOrientation(as: getOrientation(), with: CGSize(width: view.bounds.width, height: view.bounds.height))
+        }
         print("View did load!")
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        
+        print("to \(size)")
+        print("cardview from \(cardView?.bounds)")
+        print("view from \(view.bounds)")
+        
         super.viewWillTransition(to: size, with: coordinator)
+        
+        cardView?.setOrientation(as: getOrientation(), with: size)
 
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        print("viewWillLayoutSubviews \(view.bounds)")
         
-        if let cardView = cardView {
-            cardView.setOrientation(as: getOrientation())
-        }
+        
+
         
     }
 
     // MARK: - Private methods
     
     private func getOrientation() -> UIDevice.Orientation {
-        if UIDevice.current.orientation.isLandscape {
+        if UIDevice.Orientation.isPortrait {
+            return .Portrait
+        } else if UIDevice.Orientation.isLandscape {
             return .Landscape
         } else {
-            return .Portrait
+            fatalError("Unknown orientation!")
         }
         
     }
 
     private func getSymbolViewControllers(for model: Card) -> [SymbolViewController] {
-        
-        print("getSymbolViewControllers")
         
         assert(model.numberOfSymbols > 0, "CardViewController: private func getSymbolViewControllers(for model: Card) - model's numberOfSymbols less than 1")
         

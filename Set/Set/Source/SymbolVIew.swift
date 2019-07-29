@@ -18,6 +18,7 @@ class SymbolView: UIView {
     
     private var orientation: UIDevice.Orientation? {
         didSet {
+            setNeedsLayout()
             setNeedsDisplay()
         }
     }
@@ -50,10 +51,6 @@ class SymbolView: UIView {
     // MARK: - Public methods
     
     public func setOrientation(as orientation: UIDevice.Orientation) {
-        
-        if let superView = self.superview {
-            self.frame = superView.frame
-        }
         self.orientation = orientation
     }
     
@@ -95,7 +92,7 @@ class SymbolView: UIView {
     
     private func adjustOrientation(of path: UIBezierPath) {
     
-        if orientation == .Portrait {
+        if orientation == .Landscape {
             let pathCenter = CGPoint(x: path.bounds.midX, y: path.bounds.midY)
             path.apply(CGAffineTransform(translationX: pathCenter.x, y: pathCenter.y).inverted())
             path.apply(CGAffineTransform(rotationAngle: CGFloat.pi/2))

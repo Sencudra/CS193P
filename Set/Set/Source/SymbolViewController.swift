@@ -43,6 +43,8 @@ class SymbolViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        symbolView?.setOrientation(as: getOrientation())
+
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -52,7 +54,6 @@ class SymbolViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        print("viewWillLayoutSubviews \(view.bounds)")
         
         if let symbolView = symbolView {
             symbolView.setOrientation(as: getOrientation())
@@ -63,12 +64,15 @@ class SymbolViewController: UIViewController {
     // MARK: - Private methods
     
     private func getOrientation() -> UIDevice.Orientation {
-        if UIDevice.current.orientation.isLandscape {
+        
+        if UIDevice.Orientation.isPortrait {
+            return .Portrait
+        } else if UIDevice.Orientation.isLandscape {
             return .Landscape
         } else {
-            return .Portrait
+            fatalError("Unknown orientation!")
         }
-
+        
     }
     
     private func getSymbol(for symbol: Symbol) -> SymbolView.Symbol {

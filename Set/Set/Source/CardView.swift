@@ -6,12 +6,6 @@
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
-
-//        let symbol = SymbolView.Symbol.Wave
-//        let filling = SymbolView.Filling.Partly
-//        let color = UIColor.SymbolColor.purple
-
-
 import UIKit
 
 class CardView: UIView {
@@ -21,7 +15,6 @@ class CardView: UIView {
     let symbolViews: [SymbolView]
     
     private var orientation: UIDevice.Orientation? {
-        
         didSet {
             setNeedsLayout()
             setNeedsDisplay()
@@ -50,7 +43,10 @@ class CardView: UIView {
         prepareCard()
 
         // TODO remove carefully
-        for _ in symbolViews {  }
+        for view in symbolViews {
+            
+            print("draw cardview: ", view.bounds)
+        }
 
     }
 
@@ -58,8 +54,10 @@ class CardView: UIView {
         super.layoutSubviews()
 
         if orientation == .Landscape {
+            print("Layout horizontally")
             layoutSymbolViewsHorizontally()
         } else {
+            print("Layout vertically")
             layoutSymbolViewsVertically()
         }
 
@@ -67,10 +65,9 @@ class CardView: UIView {
 
     // MARK: - Internal methods
 
-    func setOrientation(as orientation: UIDevice.Orientation) {
+    func setOrientation(as orientation: UIDevice.Orientation, with size: CGSize) {
+        self.frame = CGRect(origin: frame.origin, size: size)
         self.orientation = orientation
-        setNeedsLayout()
-        setNeedsDisplay()
     }
 
     // MARK: - Private methods
@@ -92,7 +89,7 @@ class CardView: UIView {
             let x = offsetX
             let y = offsetY + (CGFloat(index) * height)
             symbolView.frame = CGRect(x: x, y: y, width: width, height: height)
-            symbolView.setOrientation(as: .Landscape)
+            symbolView.setOrientation(as: .Portrait)
         }
 
     }
@@ -107,7 +104,7 @@ class CardView: UIView {
             let x = offsetX + (CGFloat(index) * width)
             let y = offsetY
             symbolView.frame = CGRect(x: x, y: y, width: width, height: height)
-            symbolView.setOrientation(as: .Portrait)
+            symbolView.setOrientation(as: .Landscape)
         }
 
     }
