@@ -4,13 +4,13 @@
 //
 //  Created by CS193p Instructor.
 //  Modified by Vladislav Tarasevich on 24/07/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-struct Grid {
+struct BoardGrid {
     
     // MARK: - Types
     

@@ -1,12 +1,12 @@
 //
-//  Card.swift
+//  CardModel.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 30/03/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 30/03/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
-struct Card: Equatable, Hashable {
+struct Card {
     
     // MARK: - Internal properties
     
@@ -15,7 +15,9 @@ struct Card: Equatable, Hashable {
 
 }
 
-extension Card {
+extension Card: Equatable, Hashable {
+    
+    // MARK: - Methods
     
     static func == (lhs: Card, rhs: Card) -> Bool {
         return  lhs.numberOfSymbols == rhs.numberOfSymbols &&

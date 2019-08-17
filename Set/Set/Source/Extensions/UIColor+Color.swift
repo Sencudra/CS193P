@@ -2,8 +2,8 @@
 //  UIColor+Color.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 06/04/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 06/04/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import UIKit

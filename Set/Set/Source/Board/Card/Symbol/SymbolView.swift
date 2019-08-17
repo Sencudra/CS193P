@@ -1,9 +1,9 @@
 //
-//  SymbolVIew.swift
+//  SymbolView.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 07/07/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 07/07/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import UIKit
@@ -15,13 +15,6 @@ class SymbolView: UIView {
     private let symbol: Symbol
     private let filling: Filling
     private let color: UIColor
-    
-    private var orientation: UIDevice.Orientation? {
-        didSet {
-            setNeedsLayout()
-            setNeedsDisplay()
-        }
-    }
 
     // MARK: - Initializers
     
@@ -29,13 +22,12 @@ class SymbolView: UIView {
         self.symbol = symbol
         self.color = color
         self.filling = filling
-        self.orientation = nil
         super.init(frame: frame)
         
         backgroundColor = UIColor.clear
     }
     
-    // No need to use this init, as view is created completely programmatically
+    // No need to implement this init, as view is created completely programmatically
     required init?(coder aDecoder: NSCoder) {
         preconditionFailure("SymbolView: required init?(coder aDecoder: NSCoder) not implemented!")
     }
@@ -48,18 +40,11 @@ class SymbolView: UIView {
         createPath()
     }
     
-    // MARK: - Public methods
-    
-    public func setOrientation(as orientation: UIDevice.Orientation) {
-        self.orientation = orientation
-    }
-    
     // MARK: - Private methods
     
     private func createPath() {
         let path = symbol.createPath()
-    
-        adjustOrientation(of: path)
+
         adjustScale(of: path)
         adjustPosition(of: path)
         
@@ -77,28 +62,22 @@ class SymbolView: UIView {
         var scale: CGFloat
         let (diffX, diffY) = getBoundsDifferenceToView(of: path)
         if diffX < diffY {
-            scale = Ratio.pathBoundsToBoundSize * bounds.size.width / path.bounds.size.width
+            scale = bounds.size.width / path.bounds.size.width
         } else {
-            scale = Ratio.pathBoundsToBoundSize * bounds.size.height / path.bounds.size.height
+            scale = bounds.size.height / path.bounds.size.height
         }
+        scale *= Ratio.pathBoundsToBoundSize
         path.apply(CGAffineTransform(scaleX: scale, y: scale))
     }
     
     private func adjustPosition(of path: UIBezierPath) {
         let (diffX, diffY) = getBoundsDifferenceToView(of: path)
+        
+        // Move path's upper left corner to (0, 0)
         path.apply(CGAffineTransform(translationX: path.bounds.minX, y: path.bounds.minY).inverted())
+        
+        // Centralize
         path.apply(CGAffineTransform(translationX: diffX / 2, y: diffY / 2))
-    }
-    
-    private func adjustOrientation(of path: UIBezierPath) {
-    
-        if orientation == .Landscape {
-            let pathCenter = CGPoint(x: path.bounds.midX, y: path.bounds.midY)
-            path.apply(CGAffineTransform(translationX: pathCenter.x, y: pathCenter.y).inverted())
-            path.apply(CGAffineTransform(rotationAngle: CGFloat.pi/2))
-            path.apply(CGAffineTransform(translationX: pathCenter.x, y: pathCenter.y))
-        }
-
     }
     
     private func setFilling(for path: UIBezierPath) {

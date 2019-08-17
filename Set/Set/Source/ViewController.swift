@@ -2,25 +2,18 @@
 //  ViewController.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 28/03/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 28/03/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     
-    // MARK: - Private types
-    
-//    private typealias Text = String.StaticTexts
-//    private typealias Color = UIColor.Color
-    
     // MARK: - Private properties
     
     private var model: SetGame = SetGame()
     private var timer: Timer = Timer()
-    
-    //private var views: [CardView] = [CardView]()
 
     //private var uiButtonSlotsToCards: [UIButton:Card] = [UIButton:Card]()
     
@@ -36,14 +29,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .green
         
-        let symbol = Symbol(type: 1, color: 1, filling: 1)
-        let card = Card(numberOfSymbols: 2, symbol: symbol)
+//        let symbol = Symbol(type: 1, color: 1, filling: 1)
+//        let card = Card(numberOfSymbols: 2, symbol: symbol)
         
-        let cardViewController = CardViewController(frame: view.bounds, model: card)
+        let model = SetGame()
+        let board = Board(cards: model.table)
+        let boardViewController = BoardViewController(model: board)
         
-        view.addSubview(cardViewController.view)
-        addChild(cardViewController)
-        cardViewController.didMove(toParent: self)
+        view.addSubview(boardViewController.view)
+        addChild(boardViewController)
+        boardViewController.didMove(toParent: self)
         
 //        view.addSubview(cardView)
 //        let grid = Grid(layout: .fixedCellSize(CGSize(width: 100, height: 200)),

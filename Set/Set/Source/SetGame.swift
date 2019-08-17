@@ -2,8 +2,8 @@
 //  SetGame.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 28/03/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 28/03/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import Foundation
@@ -34,13 +34,13 @@ class SetGame {
     
     init() {
         initializeDeck()
-        deal(numberOf: gameRules.cardsDealingOnStart)
+        deal(numberOf: GameRules.cardsDealingOnStart)
     }
     
     public func touch(card: Card) -> Bool? {
         assert(table.contains(card), "SetGame.touchCard() : Card not found at the table!")
         
-        if selected.count == gameRules.cardsToSelect {
+        if selected.count == GameRules.cardsToSelect {
             
             // Delete cards from table if it's a match
             if checkSet(selected[0], selected[1], selected[2]) {
@@ -63,7 +63,7 @@ class SetGame {
         select(card: card)
         
         // Check three selected cards
-        if selected.count == gameRules.cardsToSelect {
+        if selected.count == GameRules.cardsToSelect {
             
             let matched = checkSet(selected[0], selected[1], selected[2])
                         score(if: matched, evalFunc: { _ -> Int in
@@ -83,12 +83,12 @@ class SetGame {
     }
     
     public func dealMoreCards(){
-        deal(numberOf: gameRules.cardsDealingDuringGame)
-        score += gameRules.onDealingMoreCards
+        deal(numberOf: GameRules.cardsDealingDuringGame)
+        score += GameRules.onDealingMoreCards
     }
     
     public func getHelp(){
-        score += gameRules.onGettingHelp
+        score += GameRules.onGettingHelp
         table.shuffle()
         
         for cardOne in table {
@@ -140,7 +140,7 @@ class SetGame {
             }
             
             // Select card
-            if (0..<gameRules.cardsToSelect).contains(selected.count) {
+            if (0..<GameRules.cardsToSelect).contains(selected.count) {
                 selected += [card]
                 score -= 1
             } else {
@@ -159,7 +159,7 @@ class SetGame {
                 for symbol in range {
                     for filling in range {
                         
-                        let card = Card(numberOfSymbols: number,
+                        let card = Card(numberOfSymbols: number + 1,
                                         symbol: Symbol(type: symbol, color: color, filling: filling))
                         deck += [card]
                         
@@ -183,7 +183,7 @@ class SetGame {
                 table += [card]
             }
             
-            if table.count == gameRules.tableMaxSize {
+            if table.count == GameRules.tableMaxSize {
                 dealingAvailable = false
             }
             
@@ -200,7 +200,7 @@ class SetGame {
         let ruleColor = Set([first.symbol.color, second.symbol.color, third.symbol.color]).count
         let ruleFilling = Set([first.symbol.filling, second.symbol.filling, third.symbol.filling]).count
         
-        let checkRule = { $0 == 1 || $0 == gameRules.cardsToSelect }
+        let checkRule = { $0 == 1 || $0 == GameRules.cardsToSelect }
         
         return checkRule(ruleNumber) && checkRule(ruleSymbol) && checkRule(ruleColor) && checkRule(ruleFilling)
     }

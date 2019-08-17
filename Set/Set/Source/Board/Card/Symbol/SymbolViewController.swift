@@ -3,14 +3,14 @@
 //  Set
 //
 //  Created by Vladislav Tarasevich on 25/07/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import UIKit
 
 class SymbolViewController: UIViewController {
     
-    // MARK: - Private properties
+    // MARK: - Private(set) properties
     
     private(set) var symbolView: SymbolView? = nil
     
@@ -18,62 +18,23 @@ class SymbolViewController: UIViewController {
     
     init(frame: CGRect, model: Symbol) {
         super.init(nibName: nil, bundle: nil)
-        
-        let symbol = getSymbol(for: model)
-        let filling = getFilling(for: model)
-        let color = getColor(for: model)
-        
+ 
         symbolView = SymbolView(frame: frame,
-                               symbol: symbol,
-                               filling: filling,
-                               color: color)
+                               symbol: getSymbol(for: model),
+                               filling: getFilling(for: model),
+                               color: getColor(for: model))
         
-        if let subview = symbolView {
-            view.addSubview(subview)
+        if let subView = symbolView {
+            view.addSubview(subView)
         }
-        
+
     }
     
     required init?(coder: NSCoder) {
         preconditionFailure("SymbolViewController: required init?(coder aDecoder: NSCoder) not implemented!")
     }
     
-    // MARK: - Overrides
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        symbolView?.setOrientation(as: getOrientation())
-
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        if let symbolView = symbolView {
-            symbolView.setOrientation(as: getOrientation())
-        }
-        
-    }
-    
     // MARK: - Private methods
-    
-    private func getOrientation() -> UIDevice.Orientation {
-        
-        if UIDevice.Orientation.isPortrait {
-            return .Portrait
-        } else if UIDevice.Orientation.isLandscape {
-            return .Landscape
-        } else {
-            fatalError("Unknown orientation!")
-        }
-        
-    }
     
     private func getSymbol(for symbol: Symbol) -> SymbolView.Symbol {
         switch symbol.type {

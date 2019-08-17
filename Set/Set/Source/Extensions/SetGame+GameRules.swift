@@ -1,14 +1,14 @@
 //
-//  gameRules.swift
+//  SetGame+GameRules.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 30/03/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 30/03/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 extension SetGame {
     
-    enum gameRules {
+    enum GameRules {
         
         // MARK: - Cards Rules
         
