@@ -2,13 +2,29 @@
 //  UIColor+Color.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 06/04/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 06/04/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import UIKit
 
 extension UIColor {
+    
+    enum SymbolColor {
+        
+        static var green: UIColor {
+            return #colorLiteral(red: 0.2117647059, green: 0.8039215686, blue: 0.2588235294, alpha: 1)
+        }
+        
+        static var purple: UIColor {
+            return #colorLiteral(red: 0.4274509804, green: 0.4196078431, blue: 0.7960784314, alpha: 1)
+        }
+        
+        static var pink: UIColor {
+            return #colorLiteral(red: 1, green: 0, blue: 0.4588235294, alpha: 1)
+        }
+        
+    }
 
     enum Color {
         

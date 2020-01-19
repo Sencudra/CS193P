@@ -2,26 +2,26 @@
 //  SetGame.swift
 //  Set
 //
-//  Created by Vlad Tarasevich on 28/03/2019.
-//  Copyright © 2019 Vlad Tarasevich. All rights reserved.
+//  Created by Vladislav Tarasevich on 28/03/2019.
+//  Copyright © 2019 Vladislav Tarasevich. All rights reserved.
 //
 
 import Foundation
-
-
-// TODO write contanins that retruns Int?
 
 class SetGame {
     
     // MARK: - Semiprivate properties
     
-    private(set) var time = Date()
+    private(set) var time: Date = Date()
     private(set) var score: Int = 0
     private(set) var setsFound: Int = 0
-    private(set) var table = [Card]()
-    private(set) var selected = [Card]()
-    private(set) var dealingAvailable = true
-    private(set) var set = [Card]()
+    
+    private(set) var set: [Card] = [Card]()
+    private(set) var table: [Card] = [Card]()
+    private(set) var selected: [Card] = [Card]()
+    
+    private(set) var dealingAvailable: Bool = true
+    
     
     // MARK: - Private properties
     
@@ -33,23 +33,14 @@ class SetGame {
     // MARK: - Public methods
     
     init() {
-        setsFound = 0
-        time = Date()
-        
         initializeDeck()
-        deal(numberOf: gameRules.cardsDealingOnStart)
-    }
-    
-    public func dealMoreCards(){
-        deal(numberOf: gameRules.cardsDealingDuringGame)
-        score -= 10
+        deal(numberOf: GameRules.cardsDealingOnStart)
     }
     
     public func touch(card: Card) -> Bool? {
-        
         assert(table.contains(card), "SetGame.touchCard() : Card not found at the table!")
         
-        if selected.count == gameRules.cardsToSelect {
+        if selected.count == GameRules.cardsToSelect {
             
             // Delete cards from table if it's a match
             if checkSet(selected[0], selected[1], selected[2]) {
@@ -72,7 +63,7 @@ class SetGame {
         select(card: card)
         
         // Check three selected cards
-        if selected.count == gameRules.cardsToSelect {
+        if selected.count == GameRules.cardsToSelect {
             
             let matched = checkSet(selected[0], selected[1], selected[2])
                         score(if: matched, evalFunc: { _ -> Int in
@@ -91,10 +82,13 @@ class SetGame {
         
     }
     
+    public func dealMoreCards(){
+        deal(numberOf: GameRules.cardsDealingDuringGame)
+        score += GameRules.onDealingMoreCards
+    }
+    
     public func getHelp(){
-        
-        score -= 50
-        
+        score += GameRules.onGettingHelp
         table.shuffle()
         
         for cardOne in table {
@@ -119,6 +113,18 @@ class SetGame {
     
     // MARK: - Private methods
     
+    private func resetGameVariables() {
+        time = Date()
+        score = 0
+        setsFound = 0
+        
+        set = [Card]()
+        table = [Card]()
+        selected = [Card]()
+        
+        dealingAvailable = true
+    }
+    
     private func select(card: Card) {
         
         if table.contains(card) {
@@ -130,14 +136,15 @@ class SetGame {
                     selected.remove(at: index)
                     return
                 }
+                
             }
             
             // Select card
-            if (0..<gameRules.cardsToSelect).contains(selected.count) {
+            if (0..<GameRules.cardsToSelect).contains(selected.count) {
                 selected += [card]
                 score -= 1
             } else {
-                assertionFailure("SetGame.selectCard(at \(index)) : Number of selected cards exceeded possible value")
+                assertionFailure("SetGame.selectCard(at \(String(describing: index))) : Number of selected cards exceeded possible value")
             }
             
         }
@@ -151,8 +158,9 @@ class SetGame {
             for color in range {
                 for symbol in range {
                     for filling in range {
-       
-                        let card = Card(numberOfSymbols: number, symbol: symbol, color: color, filling: filling)
+                        
+                        let card = Card(numberOfSymbols: number + 1,
+                                        symbol: Symbol(type: symbol, color: color, filling: filling))
                         deck += [card]
                         
                     }
@@ -162,7 +170,6 @@ class SetGame {
             }
             
         }
-        
         deck.shuffle()
         
         assert({12...}().contains(deckSize) && deckSize % 3 == 0, "Invalid number of cards in a deck! Must be in 12... and divisible by 3")
@@ -176,7 +183,7 @@ class SetGame {
                 table += [card]
             }
             
-            if table.count == gameRules.tableMaxSize {
+            if table.count == GameRules.tableMaxSize {
                 dealingAvailable = false
             }
             
@@ -189,11 +196,11 @@ class SetGame {
     private func checkSet(_ first: Card,_ second: Card,_ third: Card) -> Bool {
         
         let ruleNumber = Set([first.numberOfSymbols, second.numberOfSymbols, third.numberOfSymbols]).count
-        let ruleSymbol = Set([first.symbol, second.symbol, third.symbol]).count
-        let ruleColor = Set([first.color, second.color, third.color]).count
-        let ruleFilling = Set([first.filling, second.filling, third.filling]).count
+        let ruleSymbol = Set([first.symbol.type, second.symbol.type, third.symbol.type]).count
+        let ruleColor = Set([first.symbol.color, second.symbol.color, third.symbol.color]).count
+        let ruleFilling = Set([first.symbol.filling, second.symbol.filling, third.symbol.filling]).count
         
-        let checkRule = { $0 == 1 || $0 == gameRules.cardsToSelect }
+        let checkRule = { $0 == 1 || $0 == GameRules.cardsToSelect }
         
         return checkRule(ruleNumber) && checkRule(ruleSymbol) && checkRule(ruleColor) && checkRule(ruleFilling)
     }
