@@ -7,7 +7,7 @@
 //
 
 struct Board {
-    
+
     let cards: [Card]
-    
+
 }

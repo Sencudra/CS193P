@@ -19,7 +19,7 @@ class CardView: UIView {
     init(symbolViews: [SymbolView]) {
         self.symbolViews = symbolViews
         super.init(frame: .zero)
-        
+
         backgroundColor = UIColor.clear
     }
 
@@ -37,11 +37,12 @@ class CardView: UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
+
         layoutSymbolViews()
     }
 
     // MARK: - Private methods
-    
+
     private func setRoundedClip() {
         let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: 10)
         roundedRect.addClip()

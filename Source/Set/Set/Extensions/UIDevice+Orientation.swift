@@ -9,24 +9,24 @@
 import UIKit
 
 extension UIDevice {
-    
+
     enum Orientation {
-        
-        case Landscape
-        case Portrait
-        
+
+        case landscape
+        case portrait
+
         static var isLandscape: Bool {
             return UIDevice.current.orientation.isValidInterfaceOrientation
                 ? UIDevice.current.orientation.isLandscape
-                : UIApplication.shared.statusBarOrientation.isLandscape
+                : UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isLandscape ?? false
         }
-        
+
         static var isPortrait: Bool {
             return UIDevice.current.orientation.isValidInterfaceOrientation
                 ? UIDevice.current.orientation.isPortrait
-                : UIApplication.shared.statusBarOrientation.isPortrait
+                : UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isPortrait ?? false
         }
-        
+
     }
-    
+
 }

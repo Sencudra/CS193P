@@ -7,25 +7,25 @@
 //
 
 extension String {
-    
+
     enum StaticTexts {
-        
+
         static var empty: String {
             return ""
         }
-        
+
         static var scoreLabel: String {
             return "Score: "
         }
-        
+
         static var setsFoundLabel: String {
             return "Sets found: "
         }
-        
+
         static var timeLabel: String {
             return "Time: "
         }
-        
+
     }
-    
+
 }

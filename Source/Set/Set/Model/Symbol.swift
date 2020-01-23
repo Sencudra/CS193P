@@ -7,9 +7,9 @@
 //
 
 struct Symbol {
-    
+
     // MARK: - Properties
-    
+
     let type: Int
     let color: Int
     let filling: Int
@@ -17,15 +17,15 @@ struct Symbol {
 }
 
 extension Symbol: Equatable, Hashable {
-    
+
     // MARK: - Methods
-    
+
     static func == (lhs: Symbol, rhs: Symbol) -> Bool {
         return lhs.type == rhs.type &&
                lhs.color == rhs.color &&
                lhs.filling == rhs.filling
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(type)
         hasher.combine(color)

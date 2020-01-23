@@ -25,28 +25,29 @@ class BoardView: UIView {
     required init?(coder: NSCoder) {
         preconditionFailure("BoardView: required init?(coder: NSCoder) not implemented!")
     }
-    
+
     // MARK: - Overrides
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
+
         guard let cardViews = cardViews else {
             return
         }
-        
+
         let count = Int(ceil(sqrt(Float(cardViews.count))))
         let grid = BoardGrid(layout: .dimensions(rowCount: count,
                                                  columnCount: count),
                              frame: self.bounds)
-        
+
         for (index, view) in cardViews.enumerated() {
-            
+
             if let rect = grid[index] {
                 view.superview?.frame = rect
             }
-            
+
         }
-        
+
     }
 
 }

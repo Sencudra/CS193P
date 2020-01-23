@@ -6,6 +6,7 @@
 
 disabled_rules:
   - leading_whitespace
+  - unused_optional_binding
 
 opt_in_rules:
   - empty_count
@@ -55,7 +56,8 @@ identifier_name:
     warning: 40
     error: 50
   min_length:
-    error: 4
+    warning: 1
+    error: 1
 #  excluded:
 #    - row
 #    - key
@@ -91,7 +93,7 @@ custom_rules:
     name: "Capitalize First Word In Comment"
     regex: '(^ +// +(?!swiftlint)[a-z]+)'
     message: "The first word of a comment should be capitalized"
-    severity: error
+    severity: warning
   comments_capitalized_find_possible_code: # from https://github.com/brandenr/swiftlintconfig
     name: "Catch Commented Out Code"
     regex: '(^ *// +(?!swiftlint)[a-z]+)'

@@ -11,41 +11,41 @@
 import UIKit
 
 class ViewController: UIViewController {
-    
-    // MARK: - Private properties
-    
-    private var model: SetGame = SetGame()
-    private var timer: Timer = Timer()
 
-    //private var uiButtonSlotsToCards: [UIButton:Card] = [UIButton:Card]()
-    
+    // MARK: - Private properties
+
+    private var model = SetGame()
+    private var timer = Timer()
+
+    // TODO: private var uiButtonSlotsToCards: [UIButton:Card] = [UIButton:Card]()
+
     // MARK: - Overrides
-    
+
     override var prefersStatusBarHidden: Bool {
-        get {
-            return true
-        }
+        return true
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         view.backgroundColor = .green
-        
-//        let symbol = Symbol(type: 1, color: 1, filling: 1)
-//        let card = Card(numberOfSymbols: 2, symbol: symbol)
-        
+
+        // TODO: let symbol = Symbol(type: 1, color: 1, filling: 1)
+        // TODO: let card = Card(numberOfSymbols: 2, symbol: symbol)
+
         let model = SetGame()
         let board = Board(cards: model.table)
         let boardViewController = BoardViewController(model: board)
-        
+
         view.addSubview(boardViewController.view)
         addChild(boardViewController)
         boardViewController.didMove(toParent: self)
-        
+
+        // swiftlint:disable comments_capitalized_find_possible_code
 //        view.addSubview(cardView)
 //        let grid = Grid(layout: .fixedCellSize(CGSize(width: 100, height: 200)),
 //                        frame: view.bounds)
-        
+
 //        for index in 0...grid.cellCount {
 //            let subview = CardView(numberOfSymbols: 3)
 //
@@ -64,19 +64,21 @@ class ViewController: UIViewController {
 //        }
 
     }
-    
+
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
+
         if UIDevice.current.orientation.isLandscape {
             print("Landscape")
         } else {
             print("Portrait")
         }
-        
+
     }
- 
+
     // MARK: - Private methods
-    
+
+    // TODO: fix
 //    private func sheduledTimerWithTimeInterval() {
 //        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.updateTimeLabel), userInfo: nil, repeats: true)
 //    }
@@ -91,7 +93,7 @@ class ViewController: UIViewController {
 //        }
 //
 //    }
-    
+
 //    @IBAction private func touchDealMoreCards(_ sender: Any) {
 //        if uiButtonEmptySlots.count > 0 {
 //            model.dealMoreCards()
@@ -101,7 +103,7 @@ class ViewController: UIViewController {
 //        }
 //
 //    }
-    
+
 //    @IBAction private func touchNewGameButton(_ sender: Any) {
 //        model = SetGame()
 //        sheduledTimerWithTimeInterval()
@@ -121,7 +123,7 @@ class ViewController: UIViewController {
 //        }
 //        updateMapping()
 //    }
-    
+
 //    private func updateMapping() {
 //        let cards = model.table
 //        for button in uiButtonSlotsToCards.keys {

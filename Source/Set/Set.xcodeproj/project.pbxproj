@@ -291,6 +291,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 311434A2224CCAE700645B5F /* Build configuration list for PBXNativeTarget "Graphical Set" */;
 			buildPhases = (
+				9926C03F23D9AEA1001B3B08 /* ShellScript */,
 				3114348C224CCAE500645B5F /* Sources */,
 				3114348D224CCAE500645B5F /* Frameworks */,
 				3114348E224CCAE500645B5F /* Resources */,
@@ -308,6 +309,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 994FB06623D4FBA4000AB849 /* Build configuration list for PBXNativeTarget "Simple Set" */;
 			buildPhases = (
+				9926C03C23D9AE7D001B3B08 /* Run Script */,
 				994FB05123D4FBA4000AB849 /* Sources */,
 				994FB05223D4FBA4000AB849 /* Frameworks */,
 				994FB05323D4FBA4000AB849 /* Resources */,
@@ -325,6 +327,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 994FB07E23D4FBB9000AB849 /* Build configuration list for PBXNativeTarget "Animated Set" */;
 			buildPhases = (
+				9926C03D23D9AE88001B3B08 /* ShellScript */,
 				994FB06923D4FBB8000AB849 /* Sources */,
 				994FB06A23D4FBB8000AB849 /* Frameworks */,
 				994FB06B23D4FBB8000AB849 /* Resources */,
@@ -409,6 +412,61 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9926C03C23D9AE7D001B3B08 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+		9926C03D23D9AE88001B3B08 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+		9926C03F23D9AEA1001B3B08 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint --config ../.swiftlint.yml\nelse\n  echo \"error: SwiftLint does not exist, download it from https://github.com/realm/SwiftLint\"\n  exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3114348C224CCAE500645B5F /* Sources */ = {
@@ -551,7 +609,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -606,7 +664,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
