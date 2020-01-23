@@ -9,13 +9,13 @@
 import Foundation
 
 enum GameRules {
-    
+
     static var penalty: Int {
         return -10
     }
-    
+
     static var reward: Int {
         return 100
     }
-    
+
 }

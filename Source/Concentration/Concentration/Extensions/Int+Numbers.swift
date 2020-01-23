@@ -9,11 +9,11 @@
 import Foundation
 
 extension Int {
-    
+
     static var zero: Int {
         return 0
     }
-    
+
     var arc4random: Int {
         if self > 0 {
             return Int.random(in: 0..<self)
@@ -22,7 +22,7 @@ extension Int {
         } else {
             return 0
         }
-        
+
     }
-    
+
 }
