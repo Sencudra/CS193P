@@ -1,4 +1,5 @@
 [![codebeat badge](https://codebeat.co/badges/91a70745-1904-493e-8bc4-e9d5e776e105)](https://codebeat.co/projects/github-com-sencudra-cs193p-master)
+![Swiftlint](https://img.shields.io/badge/SwiftLint-0.38.2-green)
 
 # Stanford Engineering CS193p: Developing iOS Apps
 
@@ -23,7 +24,7 @@ Miniprojects that is created alongside this course:
 | 1.    | [Overview of iOS](Slides/Lecture-1-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=z9IXfYHhKYI&index=1&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :heavy_check_mark: |
 | 2.    | [Model View Controller (MVC)](Slides/Lecture-2-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=4iGdu4IWMFc&index=2&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :heavy_check_mark: |
 | FL1 | Debugging: Xcode Tips & Tricks | [![](Media/play.png)](https://www.youtube.com/watch?v=7CeXdDGjsVU&index=19&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :heavy_check_mark: |
-| 3.    | [Swift](Slides/Lecture-3-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=88husjydCWY&index=3&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :x: |
+| 3.    | [Swift](Slides/Lecture-3-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=88husjydCWY&index=3&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :heavy_check_mark: |
 | 4.    | [Protocols & Closures](Slides/Lecture-4-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=RGMKmhy-eWE&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=4) | :x: |
 | 5.    | [Drawing in iOS](Slides/Lecture-5-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=pOO0pz0gPLk&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=5) | :x: |
 | 6.    | [Multitouch & Multiple MVCs](Slides/Lecture-6-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=N_PyNplrhys&index=6&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :x: |
