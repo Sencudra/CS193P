@@ -5,16 +5,16 @@
 
 ![](Media/CS193P.png)
 
-This is my very long path through the [iOS development course](https://www.youtube.com/playlist?list=PLPA-ayBrweUzGFmkT_W65z64MoGnKRZMq). There are 17 + 3 lectures and 6 + 3 assignments.
+This is my very long path through the [iOS development course](https://www.youtube.com/playlist?list=PLPA-ayBrweUzGFmkT_W65z64MoGnKRZMq). There are 17 + 3 lectures and 6 problem + 3 reading assignments.
 
 
 Goals:
-1. Complete this course this course from cover to cover.
+1. Complete this course from cover to cover.
 2. Follow the codestyle.
 3. Get familiar with CI and stuff.
 4. Have fun.
 
-Miniprojects that is created alongside this course:
+Miniprojects that were created alongside this course:
 1. [svg2swift](https://github.com/Sencudra/svg2swift) converter - just a useless python tool to convert SVG's path to swift lines.
 2. TBD
 
@@ -25,7 +25,7 @@ Miniprojects that is created alongside this course:
 | 2.    | [Model View Controller (MVC)](Slides/Lecture-2-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=4iGdu4IWMFc&index=2&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :heavy_check_mark: |
 | FL1 | Debugging: Xcode Tips & Tricks | [![](Media/play.png)](https://www.youtube.com/watch?v=7CeXdDGjsVU&index=19&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :heavy_check_mark: |
 | 3.    | [Swift](Slides/Lecture-3-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=88husjydCWY&index=3&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :heavy_check_mark: |
-| 4.    | [Protocols & Closures](Slides/Lecture-4-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=RGMKmhy-eWE&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=4) | :x: |
+| 4.    | [Protocols & Closures](Slides/Lecture-4-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=RGMKmhy-eWE&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=4) | :heavy_check_mark: |
 | 5.    | [Drawing in iOS](Slides/Lecture-5-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=pOO0pz0gPLk&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN&index=5) | :x: |
 | 6.    | [Multitouch & Multiple MVCs](Slides/Lecture-6-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=N_PyNplrhys&index=6&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :x: |
 | 7.    | [Multiple MVCs, Timer, Animation](Slides/Lecture-7-Slides.pdf) | [![](Media/play.png)](https://www.youtube.com/watch?v=diihWsxOsDk&index=7&list=PL_l7vS8VbNDFBiKIL3fEQhkKXTYsncsvN) | :x: |
