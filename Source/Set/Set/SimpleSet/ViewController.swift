@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     }
 
     @IBAction private func touchDealMoreCards(_ sender: Any) {
-        if uiButtonEmptySlots.isEmpty {
+        if !uiButtonEmptySlots.isEmpty {
             model.dealMoreCards()
             updateMapping()
         } else {
@@ -109,7 +109,7 @@ class ViewController: UIViewController {
 
         // Add new ones
         for card in cards {
-            if uiButtonSlotsToCards.key(for: card) == nil, uiButtonEmptySlots.isEmpty {
+            if uiButtonSlotsToCards.key(for: card) == nil, !uiButtonEmptySlots.isEmpty {
                 uiButtonSlotsToCards[uiButtonEmptySlots.removeFirst()] = card
             }
 

@@ -92,7 +92,7 @@ class ViewController: UIViewController {
     // MARK: - Private methods
 
     private func emoji(for card: Card) -> String {
-        if emoji[card.identifier] == nil, emojiSet.isEmpty {
+        if emoji[card.identifier] == nil, !emojiSet.isEmpty {
             let randomIndex = Int.random(in: 0..<emojiSet.count)
             emoji[card.identifier] = emojiSet.remove(at: randomIndex)
         }
