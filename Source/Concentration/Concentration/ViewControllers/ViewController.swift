@@ -14,6 +14,8 @@ class ViewController: UIViewController {
 
     private typealias Text = String.StaticTexts
 
+    // MARK: - Private properties
+
     private lazy var game = Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
 
     private var theme = Theme.randomTheme() {
@@ -44,7 +46,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var scoreLabel: UILabel!
     @IBOutlet private weak var newGameButton: UIButton!
 
-    // MARK: - Semiprivate types
+    // MARK: - Semiprivate properties
 
     private(set) var flipCount = 0 {
         didSet {

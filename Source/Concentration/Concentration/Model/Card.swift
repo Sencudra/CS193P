@@ -10,12 +10,12 @@ import Foundation
 
 struct Card {
 
-    // MARK: - Public types
+    // MARK: - Internal types
 
     var isFaceUp = false
     var isMatched = false
 
-    // MARK: - Semipublic types
+    // MARK: - SemiInternal types
 
     private(set) var identifier: Int
 
@@ -23,7 +23,7 @@ struct Card {
 
     private static var identifierGlobalCounter = 0
 
-    // MARK: - Init
+    // MARK: - Internal init
 
     init() {
         self.identifier = Card.getUniqueIdentifier()

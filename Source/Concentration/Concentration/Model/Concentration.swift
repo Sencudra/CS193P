@@ -10,16 +10,16 @@ import Foundation
 
 class Concentration {
 
-    // MARK: - Public types
+    // MARK: - Internal properties
 
     var score: Int
     var flips: Int
 
-    // MARK: - Semipublic types
+    // MARK: - Semiinternal properties
 
     private(set) var cards: [Card]
 
-    // MARK: - Private types
+    // MARK: - Private properties
 
     private var timerToMeasureTimeElapsed: Date
 
@@ -39,7 +39,7 @@ class Concentration {
         }
     }
 
-    // MARK: - Init
+    // MARK: - Internal init
 
     init(numberOfPairsOfCards: Int) {
         score = Int.zero
@@ -55,7 +55,7 @@ class Concentration {
         cards.shuffle()
     }
 
-    // MARK: - Public methods
+    // MARK: - Internal methods
 
     func chooseCard(at index: Int) {
         assert(cards.indices.contains(index), "Concentration.chooseCard(at: \(index)) : Choosen index out of range")

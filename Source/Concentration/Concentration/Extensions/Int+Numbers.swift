@@ -6,8 +6,6 @@
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
-import Foundation
-
 extension Int {
 
     static var zero: Int {

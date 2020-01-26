@@ -6,9 +6,6 @@
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 extension String {
 
     enum StaticTexts {

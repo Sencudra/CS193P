@@ -6,18 +6,17 @@
 //  Copyright © 2019 Vlad Tarasevich. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 struct Theme {
 
-    // MARK: - Public types
+    // MARK: - Public properties
 
     var emojiSet: [String]
     var backgroundColor: UIColor
     var cardColor: UIColor
 
-    // MARK: - Private types
+    // MARK: - Private properties
 
     private static var themes: [Theme] {
 
