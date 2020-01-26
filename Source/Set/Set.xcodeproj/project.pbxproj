@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		994FB0C923D503F9000AB849 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 994FB0C723D503F9000AB849 /* Assets.xcassets */; };
+		9967EFE923DE2F6B00186B23 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967EFE823DE2F6B00186B23 /* Dictionary.swift */; };
+		9967EFEA23DE2F7700186B23 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967EFE823DE2F6B00186B23 /* Dictionary.swift */; };
+		9967EFEB23DE2F7700186B23 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9967EFE823DE2F6B00186B23 /* Dictionary.swift */; };
 		999820C123D7A3D700C58E82 /* UIDevice+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998209B23D7A3C000C58E82 /* UIDevice+Orientation.swift */; };
 		999820C223D7A3D800C58E82 /* UIDevice+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998209B23D7A3C000C58E82 /* UIDevice+Orientation.swift */; };
 		999820C323D7A3D800C58E82 /* UIDevice+Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998209B23D7A3C000C58E82 /* UIDevice+Orientation.swift */; };
@@ -60,6 +63,7 @@
 		994FB0B423D5028F000AB849 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		994FB0C723D503F9000AB849 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		994FB0C823D503F9000AB849 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9967EFE823DE2F6B00186B23 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
 		9998209B23D7A3C000C58E82 /* UIDevice+Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Orientation.swift"; sourceTree = "<group>"; };
 		9998209C23D7A3C000C58E82 /* UIColor+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Color.swift"; sourceTree = "<group>"; };
 		9998209D23D7A3C000C58E82 /* SetGame+GameRules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SetGame+GameRules.swift"; sourceTree = "<group>"; };
@@ -140,9 +144,7 @@
 				999820B323D7A3C000C58E82 /* SimpleSet */,
 				9998209F23D7A3C000C58E82 /* GraphicalSet */,
 				9998209A23D7A3C000C58E82 /* Extensions */,
-				999820BD23D7A3C000C58E82 /* Model */,
-				999820B223D7A3C000C58E82 /* SceneDelegate.swift */,
-				999820BC23D7A3C000C58E82 /* SetGame.swift */,
+				999820BD23D7A3C000C58E82 /* Models */,
 			);
 			path = Set;
 			sourceTree = "<group>";
@@ -191,6 +193,7 @@
 				9998209C23D7A3C000C58E82 /* UIColor+Color.swift */,
 				9998209D23D7A3C000C58E82 /* SetGame+GameRules.swift */,
 				9998209E23D7A3C000C58E82 /* String+StaticTexts.swift */,
+				9967EFE823DE2F6B00186B23 /* Dictionary.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				999820AA23D7A3C000C58E82 /* Symbol */,
 				999820A023D7A3C000C58E82 /* Storyboards */,
 				999820A323D7A3C000C58E82 /* ViewController.swift */,
+				999820B223D7A3C000C58E82 /* SceneDelegate.swift */,
 				999820B023D7A3C000C58E82 /* AppDelegate.swift */,
 			);
 			path = GraphicalSet;
@@ -273,14 +277,15 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		999820BD23D7A3C000C58E82 /* Model */ = {
+		999820BD23D7A3C000C58E82 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				999820C023D7A3C000C58E82 /* Symbol.swift */,
 				999820BE23D7A3C000C58E82 /* Board.swift */,
 				999820BF23D7A3C000C58E82 /* Card.swift */,
-				999820C023D7A3C000C58E82 /* Symbol.swift */,
+				999820BC23D7A3C000C58E82 /* SetGame.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -472,6 +477,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				999820C123D7A3D700C58E82 /* UIDevice+Orientation.swift in Sources */,
+				9967EFE923DE2F6B00186B23 /* Dictionary.swift in Sources */,
 				999820CF23D7A44500C58E82 /* CardViewController.swift in Sources */,
 				999820DB23D7A46300C58E82 /* Board.swift in Sources */,
 				999820D423D7A44E00C58E82 /* SymbolViewController.swift in Sources */,
@@ -502,6 +508,7 @@
 				999820CC23D7A41400C58E82 /* String+StaticTexts.swift in Sources */,
 				999820E423D7A48400C58E82 /* ViewController.swift in Sources */,
 				999820DE23D7A46400C58E82 /* Board.swift in Sources */,
+				9967EFEA23DE2F7700186B23 /* Dictionary.swift in Sources */,
 				999820E023D7A46400C58E82 /* Symbol.swift in Sources */,
 				999820C523D7A3FF00C58E82 /* UIColor+Color.swift in Sources */,
 				999820E223D7A47500C58E82 /* SetGame.swift in Sources */,
@@ -520,6 +527,7 @@
 				999820CB23D7A41300C58E82 /* String+StaticTexts.swift in Sources */,
 				999820D823D7A46300C58E82 /* Board.swift in Sources */,
 				999820DA23D7A46300C58E82 /* Symbol.swift in Sources */,
+				9967EFEB23DE2F7700186B23 /* Dictionary.swift in Sources */,
 				999820C623D7A40000C58E82 /* UIColor+Color.swift in Sources */,
 				999820E123D7A47400C58E82 /* SetGame.swift in Sources */,
 				999820C923D7A40D00C58E82 /* SetGame+GameRules.swift in Sources */,

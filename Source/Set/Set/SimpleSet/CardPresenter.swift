@@ -35,15 +35,15 @@ enum CardPresenter {
         return 7
     }
 
-    private static var fontSize: CGFloat {
-        return CGFloat(integerLiteral: 28)
+    private static var fontToCellRelation: CGFloat {
+        return 0.3
     }
 
-    // MARK: - Public static methods
+    // MARK: - Internal static methods
 
     /// Proved card's atribited string
     /// - Parameter card: Card struct
-    public static func getContent(for card: Card) -> NSAttributedString? {
+    static func getContent(for card: Card, filling size: CGFloat) -> NSAttributedString? {
 
         guard let color = getColor(for: card) else {
             assertionFailure("CardPresenter.getColor(color: \(card.symbol.color))")
@@ -65,7 +65,7 @@ enum CardPresenter {
 
         let range = NSRange(location: 0, length: string.count)
         let figure = NSMutableAttributedString(string: string)
-        let font = UIFont.systemFont(ofSize: CardPresenter.fontSize)
+        let font = UIFont.systemFont(ofSize: size * CardPresenter.fontToCellRelation)
 
         figure.addAttribute(.font, value: font, range: range)
         figure.addAttribute(.kern, value: 2, range: range)
@@ -106,7 +106,7 @@ enum CardPresenter {
         default:
             return nil
         }
-        return String(repeating: cardSymbol, count: card.numberOfSymbols + 1)
+        return String(repeating: cardSymbol, count: card.numberOfSymbols)
 
     }
 

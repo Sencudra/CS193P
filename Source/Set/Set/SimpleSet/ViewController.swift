@@ -46,6 +46,12 @@ class ViewController: UIViewController {
         initCards()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        updateView()
+    }
+
     private func sheduledTimerWithTimeInterval() {
         timer = Timer.scheduledTimer(timeInterval: 1,
                                      target: self,
@@ -141,7 +147,7 @@ class ViewController: UIViewController {
                 button.layer.borderColor = selected ? color : Color.yellow
 
                 // Getting nsatributed string
-                if let attributedString = CardPresenter.getContent(for: card) {
+                if let attributedString = CardPresenter.getContent(for: card, filling: button.frame.width) {
                     button.setAttributedTitle(attributedString, for: .normal)
                     button.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
 

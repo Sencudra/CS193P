@@ -29,50 +29,34 @@ class SetGame {
         return deck.count
     }
 
-    // MARK: - Public methods
+    // MARK: - Init
 
     init() {
         initializeDeck()
         deal(numberOf: GameRules.cardsDealingOnStart)
     }
 
+    // MARK: - Internal methods
+
     /// Touch card event
-    public func touch(card: Card) -> Bool? {
+    func touch(card: Card) -> Bool? {
         assert(table.contains(card), "SetGame.touchCard() : Card not found at the table!")
 
+        // Cleaing table after match/not match
         if selected.count == GameRules.cardsToSelect {
-
-            // Delete cards from table if it's a match
             if checkSet(selected[0], selected[1], selected[2]) {
-                for card in selected {
-                    for index in 0..<table.count where card == table[index] {
-                        table.remove(at: index)
-                        break
-                    }
-                }
-
-                // TODO: add new cards
+                table.removeAll(where: { selected.contains($0) })
                 dealMoreCards()
             }
-
-            // TODO: remove selection anyway
             selected.removeAll()
         }
+
         select(card: card)
 
-        // Check three selected cards
+        // Checking for match
         if selected.count == GameRules.cardsToSelect {
-
             let matched = checkSet(selected[0], selected[1], selected[2])
-                        score(if: matched, evalFunc: { _ -> Int in
-                if matched {
-                    setsFound += 1
-                    set = []
-                    return 3
-                } else {
-                    return -5
-                }
-            })
+            score(for: matched)
             return matched
         } else {
             return nil
@@ -81,15 +65,16 @@ class SetGame {
     }
 
     /// Deal more cards at the table
-    public func dealMoreCards() {
+    func dealMoreCards() {
         deal(numberOf: GameRules.cardsDealingDuringGame)
         score += GameRules.onDealingMoreCards
     }
 
     /// Get help
-    public func getHelp() {
+    func getHelp() {
         score += GameRules.onGettingHelp
         table.shuffle()
+        selected.removeAll()
 
         for cardOne in table {
             for cardTwo in table {
@@ -128,23 +113,13 @@ class SetGame {
     private func select(card: Card) {
 
         if table.contains(card) {
-
-            // Unselect card
-            for index in 0..<selected.count where selected[index] == card {
-                selected.remove(at: index)
+            // Unselect already selected card
+            if selected.contains(card) {
+                selected.removeAll(where: { $0 == card })
+                return
             }
-
-            // Select card
-            if (0..<GameRules.cardsToSelect).contains(selected.count) {
-                selected += [card]
-                score -= 1
-            } else {
-                assertionFailure("""
-                    SetGame.selectCard(at \(String(describing: index))):\
-                    Number of selected cards exceeded possible value
-                """)
-            }
-
+            selected += [card]
+            score -= 1
         }
 
     }
@@ -204,16 +179,15 @@ class SetGame {
         return checkRule(ruleNumber) && checkRule(ruleSymbol) && checkRule(ruleColor) && checkRule(ruleFilling)
     }
 
-    private func score(if matched: Bool, evalFunc: (_:Bool) -> Int) {
-        score += evalFunc(matched)
-    }
+    private func score(for matched: Bool) {
+        if matched {
+            setsFound += 1
+            set = []
+            score += 3
+        } else {
+            score -= 5
+        }
 
-}
-
-extension Dictionary where Value: Equatable {
-
-    func key(for value: Value) -> Key? {
-        return first { $0.1 == value }?.0
     }
 
 }
