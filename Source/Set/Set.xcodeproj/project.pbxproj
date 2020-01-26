@@ -24,7 +24,6 @@
 		999820CB23D7A41300C58E82 /* String+StaticTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998209E23D7A3C000C58E82 /* String+StaticTexts.swift */; };
 		999820CC23D7A41400C58E82 /* String+StaticTexts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9998209E23D7A3C000C58E82 /* String+StaticTexts.swift */; };
 		999820CD23D7A44000C58E82 /* BoardGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999820AE23D7A3C000C58E82 /* BoardGrid.swift */; };
-		999820CE23D7A44000C58E82 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999820AF23D7A3C000C58E82 /* Grid.swift */; };
 		999820CF23D7A44500C58E82 /* CardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999820A523D7A3C000C58E82 /* CardViewController.swift */; };
 		999820D023D7A44500C58E82 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999820A623D7A3C000C58E82 /* CardView.swift */; };
 		999820D123D7A44A00C58E82 /* BoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999820A823D7A3C000C58E82 /* BoardView.swift */; };
@@ -77,7 +76,6 @@
 		999820AB23D7A3C000C58E82 /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
 		999820AC23D7A3C000C58E82 /* SymbolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolViewController.swift; sourceTree = "<group>"; };
 		999820AE23D7A3C000C58E82 /* BoardGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardGrid.swift; sourceTree = "<group>"; };
-		999820AF23D7A3C000C58E82 /* Grid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
 		999820B023D7A3C000C58E82 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		999820B223D7A3C000C58E82 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		999820B623D7A3C000C58E82 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -252,7 +250,6 @@
 			isa = PBXGroup;
 			children = (
 				999820AE23D7A3C000C58E82 /* BoardGrid.swift */,
-				999820AF23D7A3C000C58E82 /* Grid.swift */,
 			);
 			path = Grids;
 			sourceTree = "<group>";
@@ -491,7 +488,6 @@
 				999820D623D7A45600C58E82 /* ViewController.swift in Sources */,
 				999820D123D7A44A00C58E82 /* BoardView.swift in Sources */,
 				999820D023D7A44500C58E82 /* CardView.swift in Sources */,
-				999820CE23D7A44000C58E82 /* Grid.swift in Sources */,
 				999820DD23D7A46300C58E82 /* Symbol.swift in Sources */,
 				9998211523D7A82E00C58E82 /* SceneDelegate.swift in Sources */,
 				999820D223D7A44A00C58E82 /* BoardViewController.swift in Sources */,
