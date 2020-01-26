@@ -49,7 +49,6 @@
 		999820E723D7A48800C58E82 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999820B523D7A3C000C58E82 /* LaunchScreen.storyboard */; };
 		999820E823D7A48800C58E82 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 999820B723D7A3C000C58E82 /* Main.storyboard */; };
 		9998210F23D7A6A200C58E82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9998210D23D7A6A200C58E82 /* Assets.xcassets */; };
-		9998211023D7A6A200C58E82 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9998210E23D7A6A200C58E82 /* Info.plist */; };
 		9998211423D7A6C600C58E82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9998211323D7A6C600C58E82 /* Assets.xcassets */; };
 		9998211523D7A82E00C58E82 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 999820B223D7A3C000C58E82 /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -348,7 +347,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1010;
+				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "Vladislav Tarasevich";
 				TargetAttributes = {
 					3114348F224CCAE500645B5F = {
@@ -406,7 +405,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9998211023D7A6A200C58E82 /* Info.plist in Resources */,
 				9998210F23D7A6A200C58E82 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
